@@ -1,15 +1,9 @@
 Waves
 
-- As an acronym:
-	Wet Angry Vampire Eating Sandwiches // Silly runner on the beach with a vampire chasing a sandwich truck 
-	Why Are Vampires Enjoying Sunbathing // Beach resort for vampire simulator. Give them sunscreen on time before they die of sun exposure
-	Wander And Visualise Every Sunsets // Walking simulator with beautiful sunsets -- probably not, I'm not good at graphics
-	Win A Very Exciting Supper // Lottery game with a stupid prize
-	Warlocks And Vikings Eating Snails // An cooking or eating competition
+- Create a wave object that is customizable in width and length:
+	- odd number for the width
+	- ints for the length
+	- each block has a collider
+	- start and end are slopes
 	
-- Wave related:
-	- A 2d surf game on the beach
-	- A 2d surf game on a soundwave
-	- A 2d surf game on a synthwave
-	- A builder game where you need to survive the wave
-	- An incremental wave game where you need to destroy the most things
+- Make it move around 
