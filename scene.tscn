@@ -26,9 +26,16 @@ tile_map_data = PackedByteArray("AAAdAG4AAAABAAAAAAAeAG4AAAABAAAAAAAfAG4AAAABAAA
 tile_set = ExtResource("1_yo7j3")
 
 [node name="TileMapLayer4" type="TileMapLayer" parent="."]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAdAG4AAAADAAAAAAAeAG4AAAADAAAAAAAfAG4AAAADAAAAAAA=")
+tile_set = ExtResource("1_yo7j3")
+
+[node name="TileMapLayer5" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1, 0)
 tile_set = ExtResource("1_yo7j3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
