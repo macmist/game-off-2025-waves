@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_r5ucq"]
 [ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_yo7j3"]
 [ext_resource type="Script" path="res://wave_movement.gd" id="2_vsuty"]
-[ext_resource type="PackedScene" uid="uid://tcrhjqei4amp" path="res://Wave.tscn" id="4_ho2q2"]
+[ext_resource type="PackedScene" uid="uid://tcrhjqei4amp" path="res://components/Wave.tscn" id="4_ho2q2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i8vqw"]
 radius = 8.0
@@ -72,4 +72,4 @@ zoom = Vector2(3, 3)
 
 [node name="Wave2" parent="." instance=ExtResource("4_ho2q2")]
 position = Vector2(410, 417)
-wave_size = 5
+wave_size = 9
