@@ -16,5 +16,3 @@ wave_start_north_west = ExtResource("3_hul0j")
 wave_middle = ExtResource("3_pkl6x")
 wave_end_north_east = ExtResource("4_m3vh7")
 wave_end_north_west = ExtResource("5_rqwa8")
-
-[node name="Tiles" type="Node2D" parent="."]

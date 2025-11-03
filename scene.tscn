@@ -1,14 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://dlsuu5052jpmk"]
+[gd_scene load_steps=3 format=4 uid="uid://dlsuu5052jpmk"]
 
-[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_r5ucq"]
+[ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/wave_generator.tscn" id="1_kjp7g"]
 [ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_yo7j3"]
-[ext_resource type="Script" path="res://wave_movement.gd" id="2_vsuty"]
-[ext_resource type="PackedScene" uid="uid://tcrhjqei4amp" path="res://components/Wave.tscn" id="4_ho2q2"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_i8vqw"]
-radius = 8.0
 
 [node name="root" type="Node2D"]
+
+[node name="WaveGenerator" parent="." instance=ExtResource("1_kjp7g")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
@@ -34,42 +31,15 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAdAG4AAAADAAAAAAAeAG4AAAADAAAAAAAfAG4AAAADAAAAAAA=")
 tile_set = ExtResource("1_yo7j3")
 
-[node name="Wave" type="CharacterBody2D" parent="."]
-visible = false
-z_index = 1
-position = Vector2(379, 506)
-script = ExtResource("2_vsuty")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Wave"]
-texture_filter = 1
-position = Vector2(-8, -4)
-texture = ExtResource("1_r5ucq")
-hframes = 4
-vframes = 3
-frame = 8
-
-[node name="Sprite2D" type="Sprite2D" parent="Wave"]
-texture_filter = 1
-texture = ExtResource("1_r5ucq")
-hframes = 4
-vframes = 3
-frame = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wave"]
-shape = SubResource("CircleShape2D_i8vqw")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Wave"]
-texture_filter = 1
-position = Vector2(8, 4)
-texture = ExtResource("1_r5ucq")
-hframes = 4
-vframes = 3
-frame = 7
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(483, 463)
 zoom = Vector2(3, 3)
 
-[node name="Wave2" parent="." instance=ExtResource("4_ho2q2")]
-position = Vector2(410, 417)
-wave_size = 9
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Wave"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="WaveGenerator" method="_on_button_pressed"]

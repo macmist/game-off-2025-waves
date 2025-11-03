@@ -1,9 +1,0 @@
-Waves
-
-- Create a wave object that is customizable in width and length:
-	- odd number for the width
-	- ints for the length
-	- each block has a collider
-	- start and end are slopes
-	
-- Make it move around 
