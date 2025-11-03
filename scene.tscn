@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://dlsuu5052jpmk"]
+[gd_scene load_steps=6 format=4 uid="uid://dlsuu5052jpmk"]
 
 [ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_r5ucq"]
 [ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_yo7j3"]
-[ext_resource type="Script" path="res://wave.gd" id="2_vsuty"]
+[ext_resource type="Script" path="res://wave_movement.gd" id="2_vsuty"]
+[ext_resource type="PackedScene" uid="uid://tcrhjqei4amp" path="res://Wave.tscn" id="4_ho2q2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i8vqw"]
 radius = 8.0
@@ -34,6 +35,7 @@ tile_map_data = PackedByteArray("AAAdAG4AAAADAAAAAAAeAG4AAAADAAAAAAAfAG4AAAADAAA
 tile_set = ExtResource("1_yo7j3")
 
 [node name="Wave" type="CharacterBody2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(379, 506)
 script = ExtResource("2_vsuty")
@@ -67,3 +69,7 @@ frame = 7
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(483, 463)
 zoom = Vector2(3, 3)
+
+[node name="Wave2" parent="." instance=ExtResource("4_ho2q2")]
+position = Vector2(410, 417)
+wave_size = 5

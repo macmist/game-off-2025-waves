@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxt71xxq58knm"]
+
+[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_a1jk3"]
+
+[node name="WaveStart" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_a1jk3")
+hframes = 4
+vframes = 3
+frame = 7
