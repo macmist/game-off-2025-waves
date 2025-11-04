@@ -1,18 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://tcrhjqei4amp"]
+[gd_scene load_steps=2 format=3 uid="uid://tcrhjqei4amp"]
 
 [ext_resource type="Script" path="res://wave.gd" id="1_ukes2"]
-[ext_resource type="PackedScene" uid="uid://bxt71xxq58knm" path="res://components/wave_start_NE.tscn" id="2_meefw"]
-[ext_resource type="PackedScene" uid="uid://btpj7h6gt6p6s" path="res://components/wave_start_NW.tscn" id="3_hul0j"]
-[ext_resource type="PackedScene" uid="uid://6umr3i1j8v47" path="res://components/wave_middle.tscn" id="3_pkl6x"]
-[ext_resource type="PackedScene" uid="uid://8b18hw05m6a2" path="res://components/wave_end_NE.tscn" id="4_m3vh7"]
-[ext_resource type="PackedScene" uid="uid://bgon28ymxx446" path="res://components/wave_end_NW.tscn" id="5_rqwa8"]
 
 [node name="Wave" type="Node2D"]
 z_index = 1
 position = Vector2(267, 224)
 script = ExtResource("1_ukes2")
-wave_start_north_east = ExtResource("2_meefw")
-wave_start_north_west = ExtResource("3_hul0j")
-wave_middle = ExtResource("3_pkl6x")
-wave_end_north_east = ExtResource("4_m3vh7")
-wave_end_north_west = ExtResource("5_rqwa8")

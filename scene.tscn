@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://dlsuu5052jpmk"]
+[gd_scene load_steps=5 format=4 uid="uid://dlsuu5052jpmk"]
 
 [ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/wave_generator.tscn" id="1_kjp7g"]
+[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_r5ucq"]
 [ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_yo7j3"]
+[ext_resource type="Script" path="res://marker.gd" id="4_xi07p"]
 
 [node name="root" type="Node2D"]
 
@@ -32,7 +34,7 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAdAG4AAAADAAAAAAAeAG4AAAADAAAAAAAfAG4AAAADAAAAAAA=")
 tile_set = ExtResource("1_yo7j3")
 
-[node name="TileMapLayer5" type="TileMapLayer" parent="."]
+[node name="Cursor Highlight Zone" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(1, 0)
@@ -42,6 +44,15 @@ tile_set = ExtResource("1_yo7j3")
 position = Vector2(483, 463)
 zoom = Vector2(3, 3)
 
+[node name="Marker" type="Sprite2D" parent="."]
+z_index = 2
+texture_filter = 1
+texture = ExtResource("1_r5ucq")
+hframes = 4
+vframes = 3
+frame = 11
+script = ExtResource("4_xi07p")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Button" type="Button" parent="CanvasLayer"]
@@ -49,4 +60,5 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Wave"
 
+[connection signal="tile_clicked" from="Marker" to="WaveGenerator" method="_on_marker_tile_clicked"]
 [connection signal="pressed" from="CanvasLayer/Button" to="WaveGenerator" method="_on_button_pressed"]

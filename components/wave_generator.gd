@@ -15,8 +15,11 @@ enum DIRECTION {NORTH_WEST, NORTH_EAST}
 @export var collision_width: float = 16.0 # tweakable collision thickness
 @export var base_wave: PackedScene
 
+
+var start_position: Vector2
+
 func build_wave():
-	var wave = base_wave.instantiate()
+	var wave: Wave = base_wave.instantiate()
 	
 	var total_tiles = wave_size + 2
 	# instantiate enough middle tile
@@ -48,6 +51,9 @@ func build_wave():
 	wave.add_child(end_tile)
 	points.append(end_tile.position)
 	_create_collision_polygon(points, dir_x, wave)
+	if start_position:
+		wave.start_point = start_position
+		print("start at", start_position)
 	get_tree().root.add_child(wave)
 	
 func _create_collision_polygon(points: Array[Vector2], dir_x: float, root: Node2D) -> void:
@@ -78,3 +84,8 @@ func _create_collision_polygon(points: Array[Vector2], dir_x: float, root: Node2
 func _on_button_pressed() -> void:
 	build_wave()
 	pass # Replace with function body.
+
+
+func _on_marker_tile_clicked(position: Vector2) -> void:
+	start_position = position
+	build_wave()

@@ -1,13 +1,13 @@
 extends Node2D
+
+class_name Wave
+
 enum DIRECTION {NORTH_WEST, NORTH_EAST}
 
-@export var wave_size: int = 1
-@export var wave_start_north_east: PackedScene
-@export var wave_start_north_west: PackedScene
 
-@export var wave_middle: PackedScene
-@export var wave_end_north_east: PackedScene
-@export var wave_end_north_west: PackedScene
+
+@export var wave_size: int = 1
+
 @export var tile_size: Vector2 = Vector2(16, 8)
 @export var direction: DIRECTION = DIRECTION.NORTH_EAST
 @export var offset: Vector2 = Vector2(0, 0)
@@ -15,13 +15,14 @@ enum DIRECTION {NORTH_WEST, NORTH_EAST}
 
 @export var speed: float = 10
 @export var distance: int = 2
+@export var start_point: Vector2 = Vector2(440, 504)
 
 
 var target: Vector2
 
 
 func _ready() -> void:
-	global_position = Vector2(440, 504)
+	global_position = start_point
 	var direction_vec = (Vector2.UP + Vector2.RIGHT)
 	target = global_position + direction_vec * tile_size * distance
 	print(global_position, target)
@@ -32,14 +33,6 @@ func _physics_process(delta: float) -> void:
 	if global_position == target:
 		explode_and_quit()
 		
-
-func snap_to_grid(pos: Vector2) -> Vector2:
-	var half_tile = tile_size * 0.5
-	
-	var x: float = round((pos.x / half_tile.x + pos.y / half_tile.y) * .5)
-	var y: float = round((pos.y / half_tile.y - pos.x / half_tile.x) * .5)
-
-	return Vector2(x - y, x + y) * half_tile
 
 
 func explode_and_quit():
