@@ -2,14 +2,14 @@ extends Node2D
 
 class_name Wave
 
-enum DIRECTION {NORTH_WEST, NORTH_EAST}
+
 
 
 
 @export var wave_size: int = 1
 
 @export var tile_size: Vector2 = Vector2(16, 8)
-@export var direction: DIRECTION = DIRECTION.NORTH_EAST
+@export var direction: WaveGenerator.DIRECTION = WaveGenerator.DIRECTION.NORTH_EAST
 @export var offset: Vector2 = Vector2(0, 0)
 @export var collision_width: float = 16.0 # tweakable collision thickness
 
@@ -23,7 +23,8 @@ var target: Vector2
 
 func _ready() -> void:
 	global_position = start_point
-	var direction_vec = (Vector2.UP + Vector2.RIGHT)
+	print("direction", direction)
+	var direction_vec = (Vector2.UP + (Vector2.RIGHT if direction == WaveGenerator.DIRECTION.NORTH_EAST else Vector2.LEFT))
 	target = global_position + direction_vec * tile_size * distance
 	print(global_position, target)
 	

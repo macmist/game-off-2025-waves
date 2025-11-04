@@ -5,7 +5,7 @@
 - [x] Make wave appear on button click
 - [ ] Add wave disappearing animation
 - [ ] Add UI to change wave params - size, speed
-- [ ] Add possibility to select wave starting block
+- [x] Add possibility to select wave starting block
 - [ ] Make sand castles disappear after waved collide
 - [ ] Different levels of resistance for castles
 - [ ] Make towers object

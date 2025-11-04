@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name WaveGenerator
+
 enum DIRECTION {NORTH_WEST, NORTH_EAST}
 
 @export var wave_size: int = 1
@@ -51,9 +53,12 @@ func build_wave():
 	wave.add_child(end_tile)
 	points.append(end_tile.position)
 	_create_collision_polygon(points, dir_x, wave)
-	if start_position:
+	if start_position != null:
 		wave.start_point = start_position
 		print("start at", start_position)
+	if direction != null:
+		print("setting direction", direction)
+		wave.direction = direction
 	get_tree().root.add_child(wave)
 	
 func _create_collision_polygon(points: Array[Vector2], dir_x: float, root: Node2D) -> void:
@@ -86,6 +91,8 @@ func _on_button_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_marker_tile_clicked(position: Vector2) -> void:
+func _on_marker_tile_clicked(position: Vector2, direction: DIRECTION) -> void:
+	print("received direction: ", direction)
 	start_position = position
+	self.direction = direction
 	build_wave()
