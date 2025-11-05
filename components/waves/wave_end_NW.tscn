@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://bgon28ymxx446"]
 
-[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_ihfbs"]
+[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_io6mg"]
 
 [node name="WaveStart" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_ihfbs")
+texture = ExtResource("1_io6mg")
 hframes = 4
 vframes = 3
 frame = 10

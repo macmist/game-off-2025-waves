@@ -23,7 +23,6 @@ var target: Vector2
 
 func _ready() -> void:
 	global_position = start_point
-	print("direction", direction)
 	var direction_vec = (Vector2.UP + (Vector2.RIGHT if direction == WaveGenerator.DIRECTION.NORTH_EAST else Vector2.LEFT))
 	target = global_position + direction_vec * tile_size * distance
 	print(global_position, target)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://dlsuu5052jpmk"]
+[gd_scene load_steps=7 format=4 uid="uid://dlsuu5052jpmk"]
 
-[ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/wave_generator.tscn" id="1_kjp7g"]
+[ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/waves/wave_generator.tscn" id="1_kjp7g"]
 [ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_r5ucq"]
 [ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_yo7j3"]
 [ext_resource type="Script" path="res://floor_map.gd" id="3_g1yog"]
 [ext_resource type="Script" path="res://marker.gd" id="4_xi07p"]
+[ext_resource type="PackedScene" uid="uid://c8aix32v1ygx8" path="res://components/towers/tower.tscn" id="6_6bifs"]
 
 [node name="root" type="Node2D"]
 
@@ -62,6 +63,10 @@ floor_map = NodePath("../floor_map")
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Wave"
+
+[node name="Tower" parent="." instance=ExtResource("6_6bifs")]
+position = Vector2(394, 419)
+size = 9
 
 [connection signal="tile_clicked" from="Marker" to="WaveGenerator" method="_on_marker_tile_clicked"]
 [connection signal="pressed" from="CanvasLayer/Button" to="WaveGenerator" method="_on_button_pressed"]

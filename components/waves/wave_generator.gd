@@ -52,7 +52,7 @@ func build_wave():
 	end_tile.position =  Vector2(offset_x * dir_x + dir_x * (wave_size + 1) * tile_size.x / 2, offset_y + (wave_size + 1) * tile_size.y / 2)
 	wave.add_child(end_tile)
 	points.append(end_tile.position)
-	_create_collision_polygon(points, dir_x, wave)
+	_create_collision_polygon(points, wave)
 	if start_position != null:
 		wave.start_point = start_position
 		print("start at", start_position)
@@ -61,7 +61,7 @@ func build_wave():
 		wave.direction = direction
 	get_tree().root.add_child(wave)
 	
-func _create_collision_polygon(points: Array[Vector2], dir_x: float, root: Node2D) -> void:
+func _create_collision_polygon(points: Array[Vector2], root: Node2D) -> void:
 	if points.is_empty():
 		return
 
@@ -91,8 +91,8 @@ func _on_button_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_marker_tile_clicked(position: Vector2, direction: DIRECTION) -> void:
-	print("received direction: ", direction)
-	start_position = position
-	self.direction = direction
+func _on_marker_tile_clicked(pos: Vector2, dir: DIRECTION) -> void:
+	print("received direction: ", dir)
+	start_position = pos
+	direction = dir
 	build_wave()
