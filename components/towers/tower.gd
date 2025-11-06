@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 
 class_name Tower
 
@@ -52,10 +52,6 @@ func _update_collision_shape() -> void:
 		print("size: ", col.shape.size)
 		col.position.x = 0
 	
-	
-	
-
-
 
 func remove_layers(layers_to_remove: int = 1):
 	if size <= layers_to_remove:
@@ -68,9 +64,27 @@ func remove_layers(layers_to_remove: int = 1):
 		var child = layers.get_child(i)
 		child.position = Vector2(0, - i * tile_size.y / 2)
 	size -= layers_to_remove
-	#find_children()
+	_update_collision_shape()
+	
+	
 		
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
 		remove_layers(1)
-		_update_collision_shape()
+
+
+func damage(amount: int):
+	var layers_to_remove = 0
+	while amount > 0:
+		var a = resistance % resistance_per_tile
+		if a > 0:
+			resistance -= a
+			amount -=a
+			layers_to_remove += 1
+		else:
+			layers_to_remove +=  amount / resistance_per_tile
+			resistance -= amount
+			amount -= amount
+	print("removing ", layers_to_remove)
+	if layers_to_remove > 0:
+		remove_layers(layers_to_remove)

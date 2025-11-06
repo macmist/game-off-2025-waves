@@ -7,7 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfuoc"]
 size = Vector2(20, 72)
 
-[node name="Tower" type="Node2D"]
+[node name="Tower" type="RigidBody2D"]
+mass = 0.001
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
 script = ExtResource("1_wqo2f")
 tower_top = ExtResource("2_flng0")
 tower_middle = ExtResource("3_7a5un")

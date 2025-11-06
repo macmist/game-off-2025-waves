@@ -65,7 +65,7 @@ offset_bottom = 8.0
 text = "Wave"
 
 [node name="Tower" parent="." instance=ExtResource("6_6bifs")]
-position = Vector2(394, 419)
+position = Vector2(439, 485)
 size = 9
 
 [connection signal="tile_clicked" from="Marker" to="WaveGenerator" method="_on_marker_tile_clicked"]

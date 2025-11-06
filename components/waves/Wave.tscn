@@ -2,7 +2,15 @@
 
 [ext_resource type="Script" path="res://wave.gd" id="1_qw8cp"]
 
-[node name="Wave" type="Node2D"]
+[node name="Wave" type="RigidBody2D"]
 z_index = 1
 position = Vector2(267, 224)
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_qw8cp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

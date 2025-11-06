@@ -81,9 +81,14 @@ func _create_collision_polygon(points: Array[Vector2], root: Node2D) -> void:
 	for p in points:
 		poly_points.append(p - perp_vec)
 		
-	var poly = CollisionPolygon2D.new()
-	poly.polygon = poly_points
-	root.add_child(poly)
+	
+	var collisions = root.find_children("*", "CollisionPolygon2D")
+	if collisions.size() > 0:
+		var col = collisions[0];
+		col.polygon = poly_points
+		root.move_child(col, -1)
+	else:
+		print ("not foun")
 
 
 func _on_button_pressed() -> void:
