@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6d2tew8sdhk7"]
+
+[ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_t1fwp"]
+[ext_resource type="Script" path="res://level_generator.gd" id="1_vbcl3"]
+
+[node name="LevelGenerator" type="TileMapLayer"]
+texture_filter = 1
+tile_set = ExtResource("1_t1fwp")
+script = ExtResource("1_vbcl3")

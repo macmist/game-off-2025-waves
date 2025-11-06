@@ -85,6 +85,5 @@ func damage(amount: int):
 			layers_to_remove +=  amount / resistance_per_tile
 			resistance -= amount
 			amount -= amount
-	print("removing ", layers_to_remove)
 	if layers_to_remove > 0:
 		remove_layers(layers_to_remove)

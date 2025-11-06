@@ -33,6 +33,7 @@ texture = ExtResource("1_jygye")
 
 [resource]
 tile_shape = 1
+tile_layout = 5
 tile_size = Vector2i(16, 8)
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "type"

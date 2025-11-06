@@ -8,7 +8,7 @@
 - [ ] Add UI to change wave params - size, speed
 - [x] Add possibility to select wave starting block
 - [x] Mechanism to destroy towers layer by layer
-- [ ] Make sand castles collapse after waved collide
+- [ ] Make sand castles collapse after waves collide
 - [ ] 
 - [ ] Different levels of resistance for castles
 - [x] Make towers object
