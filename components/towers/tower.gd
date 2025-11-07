@@ -22,8 +22,6 @@ func _ready():
 	build()
 	resistance = resistance_per_tile * size
 
-
-
 func build():
 	var total_tiles = size
 	var total_height = total_tiles * tile_size.y / 2
@@ -38,7 +36,6 @@ func build():
 		
 	var top = tower_top.instantiate()
 	top.position = Vector2(0, -total_height)
-	print(top.position)
 	layers.add_child(top)
 	_update_collision_shape()
 	
@@ -46,11 +43,13 @@ func _update_collision_shape() -> void:
 	var collisions = find_children("*", "CollisionShape2D")
 	if collisions.size() > 0:
 		var col = collisions[0];
-		col.shape.size.x = 14
-		col.shape.size.y = tile_size.y / 2 * size
+		var shape = RectangleShape2D.new()
+		shape.size.x = 14
+		shape.size.y = tile_size.y / 2 * size
+		col.shape = shape
 		col.position.y = - col.shape.size.y / 2 + tile_size.y
-		print("size: ", col.shape.size)
 		col.position.x = 0
+		print(col.shape)
 	
 
 func remove_layers(layers_to_remove: int = 1):
@@ -59,7 +58,7 @@ func remove_layers(layers_to_remove: int = 1):
 	var count = layers.get_child_count()
 	for i in range(layers_to_remove):
 		layers.remove_child(layers.get_child(0))
-	
+
 	for i in range(count - layers_to_remove):
 		var child = layers.get_child(i)
 		child.position = Vector2(0, - i * tile_size.y / 2)
@@ -67,10 +66,6 @@ func remove_layers(layers_to_remove: int = 1):
 	_update_collision_shape()
 	
 	
-		
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
-		remove_layers(1)
 
 
 func damage(amount: int):

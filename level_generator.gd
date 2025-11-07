@@ -11,43 +11,62 @@ var nw_border_atlas = Vector2(2, 1)
 var tile_size = Vector2(16, 8)
 
 
-const TOWER_MIDDLE = preload("res://components/towers/tower_middle.tscn")
+const TOWER = preload("res://components/towers/tower.tscn")
+func read_level(path: String) -> Dictionary:
+	var file = FileAccess.open(path, FileAccess.READ)
+	var size = file.get_line().split(' ')
+	var width = int(size[0])
+	var height = int(size[1])
+	var tiles = []
+	print(width, height)
+	for y in range(height):
+		var content = file.get_line()
+		tiles.append([])
+		for x in content:
+			tiles[y].append(int(x))
+	return {"width": width, "height": height, "tiles": tiles}
 
-
-func generate_floor():
-	for height in range(size):
-		for width in range(size):
-			var atlas = land_atlas
-			if height == size - 2:
-				if width == height:
-					atlas = water_atlas
-				else:
-					atlas = ne_border_atlas
-			if width == size - 2:
-				if width == height:
-					atlas = water_atlas
-				else:
-					atlas = nw_border_atlas
-			
-			if height == size - 1 || width == size - 1:
-				atlas = water_atlas
+func generate_floor(dict: Dictionary):
+	if !dict.has("width") || !dict.has("height") || !dict.has("tiles"):
+		return
+	var width = dict.get("width")
+	var height = dict.get("height")
+	var tiles = dict.get("tiles")
 	
-			var position = Vector2(width, height)
-			set_cell(position, 0, atlas)
+	for h in range(height):
+		for w in range(width):
+			var atlas = land_atlas
+			var t = tiles[h][w]
+			match t:
+				0: 
+					atlas = water_atlas
+				1:
+					atlas = ne_border_atlas
+				2:
+					atlas = nw_border_atlas
+				_:
+					atlas = land_atlas
 			
-func add_towers():
-	var position = Vector2(1, 1)
-	print("global", to_global(local_to_map(position)), local_to_map(position), to_global(position), map_to_local(position), position)
+			var position = Vector2(w, h)
+			set_cell(position, 0, atlas)
+			if t >= 4:
+				height = t - 3 # 4 is a tower of size 1
+				add_tower(position, height)
+			
+func add_tower(position: Vector2, height: int):
 	var global = map_to_local(position)
-	var tower = TOWER_MIDDLE.instantiate()
-	tower.position = global
-	tower.z_index = 12
+	var tower = TOWER.instantiate()
+	tower.position = global + Vector2(0, -4)
+	tower.z_index = 1
+	tower.size = height
+	print("local ", position, "global ", global)
 	add_child(tower)
 
 
 func _ready() -> void:
-	generate_floor()
-	add_towers()
+	var data = read_level("res://levels/level_0.txt")
+	generate_floor(data)
+	
 
 
 func get_tile_type(coords: Vector2) -> String:

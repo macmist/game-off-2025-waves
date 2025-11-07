@@ -63,7 +63,7 @@ offset_bottom = 8.0
 text = "Wave"
 
 [node name="Tower" parent="." instance=ExtResource("6_6bifs")]
-position = Vector2(439, 485)
+position = Vector2(55, 66)
 size = 9
 
 [node name="LevelGenerator" parent="." instance=ExtResource("7_aiebb")]
