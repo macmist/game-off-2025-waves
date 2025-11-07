@@ -2,7 +2,6 @@ extends Sprite2D
 
 @export var tile_size: Vector2 = Vector2(16, 8)
 @export var floor_map: FloorMap
-
 var current_tile_type: String = ""
 
 signal tile_clicked(position: Vector2, direction: WaveGenerator.DIRECTION)
