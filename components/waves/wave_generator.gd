@@ -52,7 +52,7 @@ func build_wave():
 	end_tile.position =  Vector2(offset_x * dir_x + dir_x * (wave_size + 1) * tile_size.x / 2, offset_y + (wave_size + 1) * tile_size.y / 2)
 	wave.add_child(end_tile)
 	points.append(end_tile.position)
-	_create_collision_polygon(points, wave)
+	#_create_collision_polygon(points, wave)
 	if start_position != null:
 		wave.start_point = start_position
 		print("start at", start_position)
@@ -61,35 +61,6 @@ func build_wave():
 		wave.direction = direction
 	get_tree().root.add_child(wave)
 	
-func _create_collision_polygon(points: Array[Vector2], root: Node2D) -> void:
-	if points.is_empty():
-		return
-
-	var half_w = collision_width / 2.0
-
-	# The polygon will be built along the tile line, offset perpendicular by half width
-	var poly_points: Array[Vector2] = []
-
-	# Compute perpendicular vector for width offset
-	var step_vec = (points[-1] - points[0]).normalized()
-	var perp_vec = Vector2(-step_vec.y, step_vec.x) * half_w
-
-	# Build top and bottom edges
-	for p in points:
-		poly_points.append(p + perp_vec)
-	points.reverse()
-	for p in points:
-		poly_points.append(p - perp_vec)
-		
-	
-	var collisions = root.find_children("*", "CollisionPolygon2D")
-	if collisions.size() > 0:
-		var col = collisions[0];
-		col.polygon = poly_points
-		root.move_child(col, -1)
-	else:
-		print ("not foun")
-
 
 func _on_button_pressed() -> void:
 	build_wave()

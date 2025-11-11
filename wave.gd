@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 
 class_name Wave
 
@@ -35,11 +35,3 @@ func _physics_process(delta: float) -> void:
 func explode_and_quit():
 	# TODO: animate wave exploding
 	queue_free()
-
-
-func _on_body_entered(body: Node) -> void:
-	print("entered collision, ", body)
-	if body is Tower:
-		print("it is a tower")
-		body.damage(20)
-	pass # Replace with function body.

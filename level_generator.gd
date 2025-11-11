@@ -57,7 +57,7 @@ func add_tower(position: Vector2, height: int):
 	var global = map_to_local(position)
 	var tower = TOWER.instantiate()
 	tower.position = global + Vector2(0, -4)
-	tower.z_index = 1
+	#tower.z_index = 1
 	tower.size = height
 	print("local ", position, "global ", global)
 	add_child(tower)

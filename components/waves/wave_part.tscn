@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc15ty5npswib"]
+
+[ext_resource type="Script" path="res://components/waves/wave_part.gd" id="1_aqe8p"]
+
+[node name="WavePart" type="RigidBody2D"]
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_aqe8p")

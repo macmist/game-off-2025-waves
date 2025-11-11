@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://6umr3i1j8v47"]
+[gd_scene load_steps=3 format=3 uid="uid://6umr3i1j8v47"]
 
 [ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_jbyan"]
+[ext_resource type="Script" path="res://components/waves/wave_part.gd" id="1_xmgrm"]
 
-[node name="WaveStart" type="Node2D"]
+[node name="WaveMiddle" type="RigidBody2D"]
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_xmgrm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -10,3 +16,9 @@ texture = ExtResource("1_jbyan")
 hframes = 4
 vframes = 3
 frame = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 4)
+polygon = PackedVector2Array(0, 3, 7, 0, 7, -8, 0, -11, -7, -8, -7, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

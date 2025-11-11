@@ -44,17 +44,19 @@ func _update_collision_shape() -> void:
 	if collisions.size() > 0:
 		var col = collisions[0];
 		var shape = RectangleShape2D.new()
-		shape.size.x = 14
-		shape.size.y = tile_size.y / 2 * size
+		shape.size.x = 10
+		shape.size.y = tile_size.y / 2 * (size + 1)
 		col.shape = shape
 		col.position.y = - col.shape.size.y / 2 + tile_size.y
 		col.position.x = 0
 		print(col.shape)
 	
 
-func remove_layers(layers_to_remove: int = 1):
+# Return true if destroyed
+func remove_layers(layers_to_remove: int = 1) -> bool:
 	if size <= layers_to_remove:
 		queue_free()
+		return true
 	var count = layers.get_child_count()
 	for i in range(layers_to_remove):
 		layers.remove_child(layers.get_child(0))
@@ -64,21 +66,23 @@ func remove_layers(layers_to_remove: int = 1):
 		child.position = Vector2(0, - i * tile_size.y / 2)
 	size -= layers_to_remove
 	_update_collision_shape()
+	return false
 	
 	
 
 
-func damage(amount: int):
+func damage(amount: int) -> bool:
 	var layers_to_remove = 0
 	while amount > 0:
 		var a = resistance % resistance_per_tile
 		if a > 0:
 			resistance -= a
-			amount -=a
+			amount -= a
 			layers_to_remove += 1
 		else:
 			layers_to_remove +=  amount / resistance_per_tile
 			resistance -= amount
 			amount -= amount
 	if layers_to_remove > 0:
-		remove_layers(layers_to_remove)
+		return remove_layers(layers_to_remove)
+	return false
