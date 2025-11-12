@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlsuu5052jpmk"]
+[gd_scene load_steps=7 format=3 uid="uid://dlsuu5052jpmk"]
 
 [ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/waves/wave_generator.tscn" id="1_kjp7g"]
 [ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_r5ucq"]
 [ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_yo7j3"]
 [ext_resource type="Script" path="res://floor_map.gd" id="3_g1yog"]
 [ext_resource type="Script" path="res://marker.gd" id="4_xi07p"]
-[ext_resource type="PackedScene" uid="uid://c8aix32v1ygx8" path="res://components/towers/tower.tscn" id="6_6bifs"]
 [ext_resource type="PackedScene" uid="uid://b6d2tew8sdhk7" path="res://level_generator.tscn" id="7_aiebb"]
 
 [node name="root" type="Node2D"]
@@ -41,10 +40,6 @@ texture_filter = 1
 position = Vector2(1, 0)
 tile_set = ExtResource("1_yo7j3")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 57)
-zoom = Vector2(3, 3)
-
 [node name="Marker" type="Sprite2D" parent="." node_paths=PackedStringArray("floor_map")]
 z_index = 2
 texture_filter = 1
@@ -61,10 +56,6 @@ floor_map = NodePath("../LevelGenerator")
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Wave"
-
-[node name="Tower" parent="." instance=ExtResource("6_6bifs")]
-position = Vector2(55, 66)
-size = 9
 
 [node name="LevelGenerator" parent="." instance=ExtResource("7_aiebb")]
 

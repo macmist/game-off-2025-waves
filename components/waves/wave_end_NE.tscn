@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_hdfb4"]
 
 [node name="WaveStart" type="RigidBody2D"]
+collision_layer = 2
 freeze = true
 freeze_mode = 1
 contact_monitor = true
-max_contacts_reported = 1
+max_contacts_reported = 3
 script = ExtResource("1_85fv3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
