@@ -1,13 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlsuu5052jpmk"]
+[gd_scene load_steps=10 format=3 uid="uid://dlsuu5052jpmk"]
 
 [ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/waves/wave_generator.tscn" id="1_kjp7g"]
 [ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_r5ucq"]
+[ext_resource type="Texture2D" uid="uid://bw528n5r785ld" path="res://water_bg.png" id="1_wg03j"]
+[ext_resource type="Shader" path="res://scroll.gdshader" id="1_yd6ae"]
 [ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_yo7j3"]
 [ext_resource type="Script" path="res://floor_map.gd" id="3_g1yog"]
 [ext_resource type="Script" path="res://marker.gd" id="4_xi07p"]
 [ext_resource type="PackedScene" uid="uid://b6d2tew8sdhk7" path="res://level_generator.tscn" id="7_aiebb"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvnkw"]
+shader = ExtResource("1_yd6ae")
+shader_parameter/scroll_speed_1 = Vector2(0.02, 0.01)
+shader_parameter/scroll_speed_2 = Vector2(-0.015, 0.025)
+shader_parameter/shimmer_strength = 0.25
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+
 [node name="root" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -10
+y_sort_enabled = true
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_qvnkw")
+texture = ExtResource("1_wg03j")
+region_enabled = true
+region_rect = Rect2(0, -196.75, 1024, 1024)
+region_filter_clip_enabled = true
 
 [node name="WaveGenerator" parent="." instance=ExtResource("1_kjp7g")]
 
@@ -50,14 +70,6 @@ frame = 11
 script = ExtResource("4_xi07p")
 floor_map = NodePath("../LevelGenerator")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Wave"
-
 [node name="LevelGenerator" parent="." instance=ExtResource("7_aiebb")]
 
 [connection signal="tile_clicked" from="Marker" to="WaveGenerator" method="_on_marker_tile_clicked"]
-[connection signal="pressed" from="CanvasLayer/Button" to="WaveGenerator" method="_on_button_pressed"]
