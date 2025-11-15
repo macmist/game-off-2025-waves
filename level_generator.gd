@@ -2,6 +2,8 @@ extends FloorMap
 
 
 @export var size: int = 15
+@onready var camera: Camera2D = $Camera
+@export var ocean_sprite: Sprite2D
 
 var water_atlas = Vector2(0, 1)
 var land_atlas = Vector2(0, 0)
@@ -18,7 +20,6 @@ func read_level(path: String) -> Dictionary:
 	var width = int(size[0])
 	var height = int(size[1])
 	var tiles = []
-	print(width, height)
 	for y in range(height):
 		var content = file.get_line()
 		tiles.append([])
@@ -59,15 +60,49 @@ func add_tower(position: Vector2, height: int):
 	tower.position = global + Vector2(0, -4)
 	#tower.z_index = 1
 	tower.size = height
-	print("local ", position, "global ", global)
 	add_child(tower)
 
 
 func _ready() -> void:
 	var data = read_level("res://levels/level_0.txt")
 	generate_floor(data)
+	center_and_zoom(data)
+	center_ocean(data)
 	
 
+func center_ocean(dict: Dictionary) -> void:
+	if !dict.has("width") || !dict.has("height") || !dict.has("tiles"):
+		return
+	var width = dict.get("width")
+	var height = dict.get("height")
+	var center_h = Vector2(width / 2, height / 2)
+	var h = to_global(map_to_local(center_h))
+	ocean_sprite.global_position.y = h.y
+
+func center_and_zoom(dict: Dictionary):
+	if !dict.has("width") || !dict.has("height") || !dict.has("tiles"):
+		return
+	var width = dict.get("width")
+	var height = dict.get("height")
+	
+	var map_width = (width + 2) * tile_size.x
+	var map_height = (height + 2) * tile_size.y
+
+	
+	
+	var viewport_size = get_viewport().get_visible_rect().size
+	
+	var zoom_x = viewport_size.x / map_width
+	var zoom_y = viewport_size.y / map_height
+	
+	var zoom_factor = min(zoom_x, zoom_y)
+	
+	$Camera.zoom = Vector2(zoom_factor, zoom_factor)
+
+	var center_map = Vector2(width / 2, height / 2)
+	var center = to_global(map_to_local(center_map))
+	$Camera.global_position = center
+	
 
 func get_tile_type(coords: Vector2) -> String:
 	var tile_coords = local_to_map(to_local(coords))

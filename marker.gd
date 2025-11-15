@@ -7,7 +7,7 @@ var current_tile_type: String = ""
 signal tile_clicked(position: Vector2, direction: WaveGenerator.DIRECTION)
 
 func _physics_process(delta: float) -> void:
-	global_position = snap_to_grid(get_global_mouse_position())
+	global_position = snap_to_grid(get_global_mouse_position()) + Vector2(4, -2)
 	if floor_map:
 		var type = floor_map.get_tile_type(global_position)
 		current_tile_type = type

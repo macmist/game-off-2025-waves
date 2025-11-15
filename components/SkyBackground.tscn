@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjbne260tsm63"]
+
+[ext_resource type="Texture2D" uid="uid://fx4omsq60pxs" path="res://sky_gradient.tres" id="1_pnygg"]
+[ext_resource type="Shader" path="res://components/clouds.gdshader" id="2_dkjwm"]
+[ext_resource type="Texture2D" uid="uid://mh5ot3a6sk2u" path="res://cloud_noise.tres" id="3_2j843"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0q5vu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8njqv"]
+shader = ExtResource("2_dkjwm")
+shader_parameter/threshold = 0.55
+shader_parameter/softness = 0.15
+shader_parameter/scroll_speed = Vector2(0.01, 0)
+shader_parameter/morph_speed = 0.02
+shader_parameter/alpha = 0.9
+shader_parameter/cloud_color = Vector3(1, 1, 1)
+
+[node name="SkyBackground" type="ParallaxBackground"]
+layer = -1
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+
+[node name="ColorRect" type="TextureRect" parent="Sky"]
+z_index = -30
+material = SubResource("CanvasItemMaterial_0q5vu")
+offset_right = 800.0
+offset_bottom = 600.0
+texture = ExtResource("1_pnygg")
+
+[node name="Clouds" type="ParallaxLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Clouds"]
+z_index = -29
+material = SubResource("ShaderMaterial_8njqv")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_2j843")
+stretch_mode = 1
