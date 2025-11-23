@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlsuu5052jpmk"]
+[gd_scene load_steps=13 format=3 uid="uid://dlsuu5052jpmk"]
 
 [ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/waves/wave_generator.tscn" id="1_kjp7g"]
 [ext_resource type="PackedScene" uid="uid://ddhx6hbmmr850" path="res://in_game_menu.tscn" id="1_kvf8t"]
@@ -9,6 +9,17 @@
 [ext_resource type="Script" path="res://floor_map.gd" id="3_g1yog"]
 [ext_resource type="Script" path="res://marker.gd" id="4_xi07p"]
 [ext_resource type="PackedScene" uid="uid://b6d2tew8sdhk7" path="res://level_generator.tscn" id="7_aiebb"]
+
+[sub_resource type="Gradient" id="Gradient_7ofga"]
+offsets = PackedFloat32Array(0, 0.665306, 0.934694, 0.995918)
+colors = PackedColorArray(0.87451, 0.945098, 1, 0, 0.87451, 0.945098, 1, 0.666667, 0.658824, 0.898039, 0.898039, 1, 0.227451, 0.705882, 0.764706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ponaf"]
+gradient = SubResource("Gradient_7ofga")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7o5go"]
+specular_color = Color(0.231373, 0.545098, 0.647059, 1)
+texture_filter = 1
 
 [node name="root" type="Node2D"]
 
@@ -61,8 +72,26 @@ frame = 11
 script = ExtResource("4_xi07p")
 floor_map = NodePath("../LevelGenerator")
 
-[node name="LevelGenerator" parent="." node_paths=PackedStringArray("ocean_sprite") instance=ExtResource("7_aiebb")]
+[node name="Horizon" type="Sprite2D" parent="."]
+position = Vector2(513.999, -24.8881)
+rotation = 1.5708
+scale = Vector2(0.222248, 16.0592)
+texture = SubResource("GradientTexture2D_ponaf")
+
+[node name="LevelGenerator" parent="." node_paths=PackedStringArray("ocean_sprite", "horizon") instance=ExtResource("7_aiebb")]
 position = Vector2(124, 73)
 ocean_sprite = NodePath("../Ocean")
+horizon = NodePath("../Horizon")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(218.75, 0.25)
+scale = Vector2(438.5, 1.5)
+texture = SubResource("CanvasTexture_7o5go")
 
 [connection signal="tile_clicked" from="Marker" to="WaveGenerator" method="_on_marker_tile_clicked"]

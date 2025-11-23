@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_1kfe4"]
 
 [node name="TowerMiddle" type="Node2D"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

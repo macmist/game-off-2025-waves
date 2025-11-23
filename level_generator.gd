@@ -4,6 +4,7 @@ extends FloorMap
 @export var size: int = 15
 @onready var camera: Camera2D = $Camera
 @export var ocean_sprite: Sprite2D
+@export var horizon: Sprite2D 
 
 var water_atlas = Vector2(0, 1)
 var land_atlas = Vector2(0, 0)
@@ -61,6 +62,7 @@ func add_tower(position: Vector2, height: int):
 	#tower.z_index = 1
 	tower.size = height
 	add_child(tower)
+	
 
 
 func _ready() -> void:
@@ -78,6 +80,7 @@ func center_ocean(dict: Dictionary) -> void:
 	var center_h = Vector2(width / 2, height / 2)
 	var h = to_global(map_to_local(center_h))
 	ocean_sprite.global_position.y = h.y
+	horizon.global_position.y = h.y - horizon.transform.get_scale().y / 3
 
 func center_and_zoom(dict: Dictionary):
 	if !dict.has("width") || !dict.has("height") || !dict.has("tiles"):

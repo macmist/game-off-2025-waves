@@ -44,10 +44,10 @@ func _update_collision_shape() -> void:
 	if collisions.size() > 0:
 		var col = collisions[0];
 		var shape = RectangleShape2D.new()
-		shape.size.x = 10
-		shape.size.y = tile_size.y / 2 * (size + 1)
+		shape.size.x = 8
+		shape.size.y = 4
 		col.shape = shape
-		col.position.y = - col.shape.size.y / 2 + tile_size.y
+		col.position.y = 4
 		col.position.x = 0
 		print(col.shape)
 	

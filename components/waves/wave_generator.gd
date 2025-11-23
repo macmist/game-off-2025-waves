@@ -15,6 +15,7 @@ enum DIRECTION {NORTH_WEST, NORTH_EAST}
 @export var offset: Vector2 = Vector2(0, 0)
 @export var collision_width: float = 16.0 # tweakable collision thickness
 @export var base_wave: PackedScene
+@onready var level_generator: TileMapLayer = $"../LevelGenerator"
 
 var wave_size: int = 1
 
@@ -61,7 +62,7 @@ func build_wave():
 	wave.distance = Game.duration.current
 	wave.speed = Game.speed.current
 	
-	get_tree().root.add_child(wave)
+	level_generator.add_child(wave) # we instantiate everything on the level generator to be able to properly order by y index
 	
 
 func _on_button_pressed() -> void:

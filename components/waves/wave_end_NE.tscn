@@ -19,5 +19,8 @@ vframes = 3
 frame = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, 1)
-polygon = PackedVector2Array(0, 6, -6, 3, -6, -5, 0, -8)
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 10)
+polygon = PackedVector2Array(6, -5, 0, -3, -6, -5, 0, -8)

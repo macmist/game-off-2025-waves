@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://level_generator.gd" id="1_vbcl3"]
 
 [node name="LevelGenerator" type="TileMapLayer"]
+y_sort_enabled = true
 texture_filter = 1
 tile_set = ExtResource("1_t1fwp")
 script = ExtResource("1_vbcl3")
