@@ -32,5 +32,5 @@ func _physics_process(delta: float) -> void:
 
 
 func explode_and_quit():
-	# TODO: animate wave exploding
+	Game.try_game_over()
 	queue_free()

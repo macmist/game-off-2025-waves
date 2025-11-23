@@ -17,6 +17,9 @@ var tile_size = Vector2(16, 8)
 const TOWER = preload("res://components/towers/tower.tscn")
 func read_level(path: String) -> Dictionary:
 	var file = FileAccess.open(path, FileAccess.READ)
+	var num_of_waves = int(file.get_line())
+	var wave_config = file.get_line().split(' ')
+	var config = extract_wave_config(wave_config)
 	var size = file.get_line().split(' ')
 	var width = int(size[0])
 	var height = int(size[1])
@@ -26,7 +29,19 @@ func read_level(path: String) -> Dictionary:
 		tiles.append([])
 		for x in content:
 			tiles[y].append(int(x))
-	return {"width": width, "height": height, "tiles": tiles}
+	var res =  {"width": width, "height": height, "tiles": tiles, "num_of_waves": num_of_waves}
+	res.merge(config)
+	print(res)
+	return res
+
+func extract_wave_config(config: Array[String]) -> Dictionary:
+	if !config:
+		return {}
+	var speed = int(config[0])
+	var strength = int(config[1])
+	var width = int(config[2])
+	var duration = int(config[3])
+	return {"wave_speed": speed, "wave_strength" : strength, "wave_width": width, "wave_duration": duration}
 
 func generate_floor(dict: Dictionary):
 	if !dict.has("width") || !dict.has("height") || !dict.has("tiles"):
@@ -70,6 +85,20 @@ func _ready() -> void:
 	generate_floor(data)
 	center_and_zoom(data)
 	center_ocean(data)
+	set_level_data(data)
+	
+
+func set_level_data(data: Dictionary):
+	if data.has("wave_speed"):
+		Game.speed.current = data.get("wave_speed")
+	if data.has("wave_strength"):
+		Game.strength.current = data.get("wave_strength")
+	if data.has("wave_duration"):
+		Game.duration.current = data.get("wave_duration")
+	if data.has("wave_width"):
+		Game.width.current = data.get("wave_width")
+	if data.has("num_of_waves"):
+		Game.num_of_waves.current = data.get("num_of_waves")
 	
 
 func center_ocean(dict: Dictionary) -> void:

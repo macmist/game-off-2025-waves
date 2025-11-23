@@ -7,7 +7,6 @@ extends VSplitContainer
 @export var button_increment: int = 1
 @export var editable_value: EditableInt:
 	set(value):
-		print("changing value")
 		editable_value = value
 		editable_value.changed.connect(_update_displays)
 

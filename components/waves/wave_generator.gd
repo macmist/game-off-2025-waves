@@ -71,7 +71,8 @@ func _on_button_pressed() -> void:
 
 
 func _on_marker_tile_clicked(pos: Vector2, dir: DIRECTION) -> void:
-	print("received direction: ", dir)
-	start_position = pos
-	direction = dir
-	build_wave()
+	if Game.num_of_waves.current > 0:
+		start_position = pos
+		direction = dir
+		build_wave()
+		Game.num_of_waves.current -= 1

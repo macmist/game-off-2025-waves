@@ -25,6 +25,10 @@ window/size/viewport_width=800
 window/size/viewport_height=600
 window/size/resizable=false
 
+[global_group]
+
+Wave=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 			modulate = Color(1, 0, 0)
 	
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT && current_tile_type.contains("border"):
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT && current_tile_type.contains("border") and Game.num_of_waves.current > 0:
 		var direction = WaveGenerator.DIRECTION.NORTH_WEST if current_tile_type.contains("NW") else WaveGenerator.DIRECTION.NORTH_EAST
 		tile_clicked.emit(global_position + Vector2(2, -4), direction) # centering the tile
 
