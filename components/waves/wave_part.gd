@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name WavePart
 
-@export var strength: int = 20
+@export var strength: int = Game.strength.current
 @export var health: int = 30
 
 func _ready():

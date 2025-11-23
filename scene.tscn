@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlsuu5052jpmk"]
+[gd_scene load_steps=10 format=3 uid="uid://dlsuu5052jpmk"]
 
 [ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/waves/wave_generator.tscn" id="1_kjp7g"]
+[ext_resource type="PackedScene" uid="uid://ddhx6hbmmr850" path="res://in_game_menu.tscn" id="1_kvf8t"]
 [ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_r5ucq"]
 [ext_resource type="PackedScene" uid="uid://ny78w53hk7bn" path="res://ocean.tscn" id="1_w8xrm"]
 [ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_yo7j3"]
@@ -10,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b6d2tew8sdhk7" path="res://level_generator.tscn" id="7_aiebb"]
 
 [node name="root" type="Node2D"]
+
+[node name="InGameMenu" parent="." instance=ExtResource("1_kvf8t")]
 
 [node name="SkyBackground" parent="." instance=ExtResource("3_c7nnf")]
 

@@ -4,7 +4,6 @@ class_name WaveGenerator
 
 enum DIRECTION {NORTH_WEST, NORTH_EAST}
 
-@export var wave_size: int = 1
 @export var wave_start_north_east: PackedScene
 @export var wave_start_north_west: PackedScene
 
@@ -17,13 +16,15 @@ enum DIRECTION {NORTH_WEST, NORTH_EAST}
 @export var collision_width: float = 16.0 # tweakable collision thickness
 @export var base_wave: PackedScene
 
+var wave_size: int = 1
+
 
 var start_position: Vector2
 
 func build_wave():
 	var wave: Wave = base_wave.instantiate()
-	
-	var total_tiles = wave_size + 2
+	wave_size = Game.width.current - 2 # don't take the side into consideration
+	var total_tiles = Game.width.current
 	# instantiate enough middle tile
 	# based on wave size
 	var total_size = total_tiles * tile_size
@@ -55,10 +56,11 @@ func build_wave():
 	#_create_collision_polygon(points, wave)
 	if start_position != null:
 		wave.start_point = start_position
-		print("start at", start_position)
 	if direction != null:
-		print("setting direction", direction)
 		wave.direction = direction
+	wave.distance = Game.duration.current
+	wave.speed = Game.speed.current
+	
 	get_tree().root.add_child(wave)
 	
 

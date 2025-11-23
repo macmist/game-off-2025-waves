@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6sxcej1w65yo"]
+
+[ext_resource type="Script" path="res://text_with_button.gd" id="1_66o5h"]
+
+[node name="Text With Button" type="VSplitContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_66o5h")
+
+[node name="Value Text" type="RichTextLabel" parent="."]
+layout_mode = 2
+text = "Wave duration"
+fit_content = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "+ 1"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

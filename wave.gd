@@ -13,14 +13,13 @@ class_name Wave
 @export var distance: int = 2
 @export var start_point: Vector2 = Vector2(440, 504)
 
-
 var target: Vector2
 
 
 func _ready() -> void:
 	global_position = start_point
 	var direction_vec = (Vector2.UP + (Vector2.RIGHT if direction == WaveGenerator.DIRECTION.NORTH_EAST else Vector2.LEFT))
-	target = global_position + direction_vec * tile_size * distance
+	target = global_position + direction_vec * tile_size * distance / 2
 	print(global_position, target)
 	
 
