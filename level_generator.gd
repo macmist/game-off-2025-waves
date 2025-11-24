@@ -1,5 +1,6 @@
 extends FloorMap
 
+class_name LevelGenerator
 
 @export var size: int = 15
 @onready var camera: Camera2D = $Camera
@@ -80,8 +81,8 @@ func add_tower(position: Vector2, height: int):
 	
 
 
-func _ready() -> void:
-	var data = read_level("res://levels/level_1.txt")
+func setup(level_number: int) -> void:
+	var data = read_level("res://levels/level_%d.txt" % level_number)
 	generate_floor(data)
 	center_and_zoom(data)
 	center_ocean(data)
