@@ -29,7 +29,15 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Bottom Menu" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Points Remaining" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VSplitContainer"]
+layout_mode = 2
+text = "Points remaining:"
+fit_content = true
+
+[node name="Bottom Menu" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VSplitContainer"]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3

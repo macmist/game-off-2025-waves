@@ -99,6 +99,7 @@ func set_level_data(data: Dictionary):
 		Game.width.current = data.get("wave_width")
 	if data.has("num_of_waves"):
 		Game.num_of_waves.current = data.get("num_of_waves")
+	Game.points_remaining.current = 0
 	
 
 func center_ocean(dict: Dictionary) -> void:

@@ -17,7 +17,7 @@ script = ExtResource("1_wqo2f")
 tower_top = ExtResource("2_flng0")
 tower_middle = ExtResource("3_7a5un")
 
-[node name="Layers" type="Node2D" parent="."]
+[node name="Layers" type="Node2D" parent="." groups=["Tower"]]
 z_index = 1
 z_as_relative = false
 

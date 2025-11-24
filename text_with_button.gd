@@ -1,5 +1,7 @@
 extends VSplitContainer
 
+class_name TextWithButton
+
 @onready var value: RichTextLabel = $"Value Text"
 @onready var button: Button = $Button
 
@@ -10,7 +12,12 @@ extends VSplitContainer
 		editable_value = value
 		editable_value.changed.connect(_update_displays)
 
-
+@export var enabled: bool = false:
+	set(value):
+		enabled = value
+		button.disabled = !value
+		
+signal clicked
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,3 +33,4 @@ func _update_displays():
 
 func _on_button_pressed() -> void:
 	editable_value.current += button_increment
+	clicked.emit()

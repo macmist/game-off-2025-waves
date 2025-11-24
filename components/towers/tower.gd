@@ -17,7 +17,6 @@ class_name Tower
 var resistance: int = 10
 
 
-
 func _ready():
 	build()
 	resistance = resistance_per_tile * size
@@ -49,13 +48,13 @@ func _update_collision_shape() -> void:
 		col.shape = shape
 		col.position.y = 4
 		col.position.x = 0
-		print(col.shape)
 	
 
 # Return true if destroyed
 func remove_layers(layers_to_remove: int = 1) -> bool:
 	if size <= layers_to_remove:
 		queue_free()
+		Game.points_remaining.current += 1
 		return true
 	var count = layers.get_child_count()
 	for i in range(layers_to_remove):
