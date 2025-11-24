@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dlsuu5052jpmk"]
+[gd_scene load_steps=15 format=3 uid="uid://dlsuu5052jpmk"]
 
 [ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/waves/wave_generator.tscn" id="1_kjp7g"]
 [ext_resource type="PackedScene" uid="uid://ddhx6hbmmr850" path="res://in_game_menu.tscn" id="1_kvf8t"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://game_controller.gd" id="1_xlmfs"]
 [ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://tileset.tres" id="1_yo7j3"]
 [ext_resource type="PackedScene" uid="uid://bjbne260tsm63" path="res://components/SkyBackground.tscn" id="3_c7nnf"]
-[ext_resource type="Script" path="res://floor_map.gd" id="3_g1yog"]
 [ext_resource type="Script" path="res://marker.gd" id="4_xi07p"]
 [ext_resource type="PackedScene" uid="uid://b6d2tew8sdhk7" path="res://level_generator.tscn" id="7_aiebb"]
 [ext_resource type="PackedScene" uid="uid://c3crf77ufdrun" path="res://game_over.tscn" id="10_kmn2t"]
@@ -33,33 +32,10 @@ visible = false
 [node name="SkyBackground" parent="." instance=ExtResource("3_c7nnf")]
 
 [node name="Ocean" parent="." instance=ExtResource("1_w8xrm")]
-position = Vector2(0, 0)
+position = Vector2(-417, -287)
 centered = false
 
 [node name="WaveGenerator" parent="." instance=ExtResource("1_kjp7g")]
-
-[node name="floor_map" type="TileMapLayer" parent="."]
-y_sort_enabled = true
-texture_filter = 1
-tile_set = ExtResource("1_yo7j3")
-script = ExtResource("3_g1yog")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
-y_sort_enabled = true
-texture_filter = 1
-tile_set = ExtResource("1_yo7j3")
-
-[node name="TileMapLayer3" type="TileMapLayer" parent="."]
-y_sort_enabled = true
-texture_filter = 1
-tile_set = ExtResource("1_yo7j3")
-
-[node name="TileMapLayer4" type="TileMapLayer" parent="."]
-visible = false
-y_sort_enabled = true
-texture_filter = 1
-tile_map_data = PackedByteArray(0, 0, 29, 0, 110, 0, 0, 0, 3, 0, 0, 0, 0, 0, 30, 0, 110, 0, 0, 0, 3, 0, 0, 0, 0, 0, 31, 0, 110, 0, 0, 0, 3, 0, 0, 0, 0, 0)
-tile_set = ExtResource("1_yo7j3")
 
 [node name="Cursor Highlight Zone" type="TileMapLayer" parent="."]
 y_sort_enabled = true
@@ -78,7 +54,7 @@ script = ExtResource("4_xi07p")
 floor_map = NodePath("../LevelGenerator")
 
 [node name="Horizon" type="Sprite2D" parent="."]
-position = Vector2(513.999, -24.8881)
+position = Vector2(514, -371)
 rotation = 1.5708
 scale = Vector2(0.222248, 16.0592)
 texture = SubResource("GradientTexture2D_ponaf")
