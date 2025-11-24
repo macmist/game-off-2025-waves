@@ -19,8 +19,9 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT && current_tile_type.contains("border") and Game.num_of_waves.current > 0:
 		var direction = WaveGenerator.DIRECTION.NORTH_WEST if current_tile_type.contains("NW") else WaveGenerator.DIRECTION.NORTH_EAST
-		tile_clicked.emit(global_position + Vector2(2, -4), direction) # centering the tile
-
+		tile_clicked.emit(global_position + Vector2(0, -6), direction) # centering the tile
+		print(global_position)
+		
 func snap_to_grid(pos: Vector2) -> Vector2:
 	var half_tile = tile_size * 0.5
 	

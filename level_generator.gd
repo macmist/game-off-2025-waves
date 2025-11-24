@@ -81,7 +81,7 @@ func add_tower(position: Vector2, height: int):
 
 
 func _ready() -> void:
-	var data = read_level("res://levels/level_0.txt")
+	var data = read_level("res://levels/level_1.txt")
 	generate_floor(data)
 	center_and_zoom(data)
 	center_ocean(data)
