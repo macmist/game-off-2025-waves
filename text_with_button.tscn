@@ -13,6 +13,7 @@ fit_content = true
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
+focus_mode = 0
 text = "+ 1"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

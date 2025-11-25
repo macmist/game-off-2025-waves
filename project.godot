@@ -30,6 +30,10 @@ window/size/resizable=false
 Wave=""
 Tower=""
 
+[gui]
+
+theme/custom="res://main_theme.tres"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
