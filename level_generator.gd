@@ -83,6 +83,8 @@ func add_tower(cell_position: Vector2, height: int):
 func _ready() -> void:
 	if main_menu:
 		setup_main_menu()
+	else:
+		setup(Game.level.current)
 
 
 func setup_main_menu():

@@ -13,6 +13,7 @@ var num_of_waves: EditableInt = EditableInt.new(3)
 var points_remaining: EditableInt = EditableInt.new(0)
 var level: EditableInt = EditableInt.new(0)
 
+const MAIN_MENU_SCENE = "res://main_menu.tscn"
 
 func try_game_over():
 	if num_of_waves.current == 0 &&  get_tree().get_node_count_in_group("Wave") <= 1:
@@ -27,7 +28,8 @@ func begin_level():
 	start_level.emit(level.current)
 	
 func main_menu():
-	pass
+	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
+
 	
 func next_level():
 	level.current += 1
