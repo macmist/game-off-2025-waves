@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://f8ai2ql5oe8h"]
+
+[ext_resource type="Script" path="res://game_controller.gd" id="1_35a2i"]
+[ext_resource type="PackedScene" uid="uid://bjbne260tsm63" path="res://components/SkyBackground.tscn" id="3_5j6mk"]
+[ext_resource type="PackedScene" uid="uid://ny78w53hk7bn" path="res://ocean.tscn" id="4_x2bk6"]
+[ext_resource type="FontFile" uid="uid://bjerha4gn6v7p" path="res://fonts/Baloo2-Bold.ttf" id="5_mgcli"]
+[ext_resource type="PackedScene" uid="uid://b6d2tew8sdhk7" path="res://level_generator.tscn" id="9_3t4cg"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7o5go"]
+specular_color = Color(0.231373, 0.545098, 0.647059, 1)
+texture_filter = 1
+
+[sub_resource type="Gradient" id="Gradient_7ofga"]
+offsets = PackedFloat32Array(0, 0.665306, 0.934694, 0.995918)
+colors = PackedColorArray(0.87451, 0.945098, 1, 0, 0.87451, 0.945098, 1, 0.666667, 0.658824, 0.898039, 0.898039, 1, 0.227451, 0.705882, 0.764706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ponaf"]
+gradient = SubResource("Gradient_7ofga")
+
+[sub_resource type="LabelSettings" id="LabelSettings_s8dlw"]
+line_spacing = 0.0
+font = ExtResource("5_mgcli")
+font_size = 88
+font_color = Color(0.478431, 0.380392, 0.270588, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 0.764706)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_35a2i")
+
+[node name="SkyBackground" parent="." instance=ExtResource("3_5j6mk")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(218.75, 0.25)
+scale = Vector2(438.5, 1.5)
+texture = SubResource("CanvasTexture_7o5go")
+
+[node name="Ocean" parent="." instance=ExtResource("4_x2bk6")]
+position = Vector2(-417, -287)
+centered = false
+
+[node name="Horizon" type="Sprite2D" parent="."]
+position = Vector2(514, -371)
+rotation = 1.5708
+scale = Vector2(0.222248, 16.0592)
+texture = SubResource("GradientTexture2D_ponaf")
+
+[node name="LevelGenerator" parent="." node_paths=PackedStringArray("ocean_sprite", "horizon") instance=ExtResource("9_3t4cg")]
+position = Vector2(124, 73)
+ocean_sprite = NodePath("../Ocean")
+horizon = NodePath("../Horizon")
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="MainMenu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Label" type="Label" parent="MainMenu/Control/MarginContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Castle
+splash"
+label_settings = SubResource("LabelSettings_s8dlw")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Button" type="Button" parent="MainMenu/Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="MainMenu/Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+text = "Choose level"

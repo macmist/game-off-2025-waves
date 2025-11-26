@@ -2,10 +2,10 @@ extends FloorMap
 
 class_name LevelGenerator
 
-@export var size: int = 15
 @onready var camera: Camera2D = $Camera
 @export var ocean_sprite: Sprite2D
 @export var horizon: Sprite2D 
+@export var main_menu: bool = true
 
 var water_atlas = Vector2(0, 1)
 var land_atlas = Vector2(0, 0)
@@ -65,21 +65,32 @@ func generate_floor(dict: Dictionary):
 				_:
 					atlas = land_atlas
 			
-			var position = Vector2(w, h)
-			set_cell(position, 0, atlas)
+			var cell_position = Vector2(w, h)
+			set_cell(cell_position, 0, atlas)
 			if t >= 4:
 				height = t - 3 # 4 is a tower of size 1
-				add_tower(position, height)
+				add_tower(cell_position, height)
 			
-func add_tower(position: Vector2, height: int):
-	var global = map_to_local(position)
+func add_tower(cell_position: Vector2, height: int):
+	var global = map_to_local(cell_position)
 	var tower = TOWER.instantiate()
 	tower.position = global + Vector2(0, -4)
 	#tower.z_index = 1
 	tower.size = height
 	add_child(tower)
 	
+	
+func _ready() -> void:
+	if main_menu:
+		setup_main_menu()
 
+
+func setup_main_menu():
+	var data = read_level("res://levels/main_menu.txt")
+	generate_floor(data)
+	center_and_zoom(data)
+	center_ocean(data)
+	set_level_data(data)
 
 func setup(level_number: int) -> void:
 	var data = read_level("res://levels/level_%d.txt" % level_number)

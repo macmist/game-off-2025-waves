@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjbne260tsm63"]
 
 [ext_resource type="Texture2D" uid="uid://fx4omsq60pxs" path="res://sky_gradient.tres" id="1_pnygg"]
-[ext_resource type="Shader" path="res://components/clouds.gdshader" id="2_dkjwm"]
+[ext_resource type="Shader" path="res://shaders/clouds.gdshader" id="2_dkjwm"]
 [ext_resource type="Texture2D" uid="uid://mh5ot3a6sk2u" path="res://cloud_noise.tres" id="3_2j843"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0q5vu"]

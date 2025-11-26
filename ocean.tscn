@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ny78w53hk7bn"]
 
-[ext_resource type="Shader" path="res://scroll.gdshader" id="1_8g6qy"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_8g6qy"]
 [ext_resource type="Texture2D" uid="uid://bw528n5r785ld" path="res://water_bg.png" id="2_6cjhk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qvnkw"]

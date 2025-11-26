@@ -2,7 +2,6 @@ shader_type canvas_item;
 
 uniform vec2 scroll_speed_1 =vec2(0.025, 0.012);
 uniform vec2 scroll_speed_2 = vec2(-0.018, 0.022);
-uniform float shimmer_strength = 0.25;
 uniform vec4 tint_color : source_color = vec4(0.23, 0.71, 0.76, 1.0);
 
 void fragment() {
