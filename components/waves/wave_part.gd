@@ -14,7 +14,6 @@ func hit():
 
 func _on_body_entered(body: Node) -> void:
 	if body is Tower:
-		print("touched a tower")
 		var touch = min(strength, health)
 		var destroyed = body.damage(touch)
 		if !destroyed: # The object was too strong and the wave gets destroyed
@@ -23,5 +22,3 @@ func _on_body_entered(body: Node) -> void:
 			health -= touch
 		if health <= 0:
 			hit()
-	else:
-		print("something else")

@@ -29,7 +29,6 @@ func build():
 	for i in range(size):
 		var middle = tower_middle.instantiate()
 		middle.position = Vector2(0, - i * tile_size.y / 2)
-		print(middle.position)
 		layers.add_child(middle)
 		points.append(middle.position)
 		

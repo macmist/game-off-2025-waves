@@ -20,7 +20,6 @@ func _ready() -> void:
 	global_position = start_point
 	var direction_vec = (Vector2.UP + (Vector2.RIGHT if direction == WaveGenerator.DIRECTION.NORTH_EAST else Vector2.LEFT))
 	target = global_position + direction_vec * tile_size * distance / 2
-	print(global_position, target)
 	
 
 func _physics_process(delta: float) -> void:

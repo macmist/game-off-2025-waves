@@ -32,7 +32,6 @@ func read_level(path: String) -> Dictionary:
 			tiles[y].append(int(x))
 	var res =  {"width": width, "height": height, "tiles": tiles, "num_of_waves": num_of_waves}
 	res.merge(config)
-	print(res)
 	return res
 
 func extract_wave_config(config: Array[String]) -> Dictionary:
