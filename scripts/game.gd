@@ -14,7 +14,7 @@ var points_remaining: EditableInt = EditableInt.new(0)
 var level: EditableInt = EditableInt.new(0)
 var max_level: EditableInt = EditableInt.new(0)
 
-const MAIN_MENU_SCENE = "res://main_menu.tscn"
+const MAIN_MENU_SCENE = "res://scenes/main_menu.tscn"
 
 func try_game_over():
 	if num_of_waves.current == 0 &&  get_tree().get_node_count_in_group("Wave") <= 1:

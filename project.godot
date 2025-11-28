@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Castle Splash"
-run/main_scene="res://main_menu.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -32,9 +32,10 @@ Tower=""
 
 [gui]
 
-theme/custom="res://main_theme.tres"
+theme/custom="res://theme/main_theme.tres"
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw528n5r785ld"
-path="res://.godot/imported/water_bg.png-6ca1f1beeda380a0630cdcedbbac332c.ctex"
+uid="uid://suk08b7n40vh"
+path="res://.godot/imported/isometrictiles.png-3d52d2a7c849ad26c57c27f219040cd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://water_bg.png"
-dest_files=["res://.godot/imported/water_bg.png-6ca1f1beeda380a0630cdcedbbac332c.ctex"]
+source_file="res://sprites/isometrictiles.png"
+dest_files=["res://.godot/imported/isometrictiles.png-3d52d2a7c849ad26c57c27f219040cd0.ctex"]
 
 [params]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6sxcej1w65yo"]
 
-[ext_resource type="Script" path="res://text_with_button.gd" id="1_66o5h"]
+[ext_resource type="Script" path="res://scripts/text_with_button.gd" id="1_rmj0q"]
 
 [node name="Text With Button" type="VSplitContainer"]
 size_flags_horizontal = 3
-script = ExtResource("1_66o5h")
+script = ExtResource("1_rmj0q")
 
 [node name="Value Text" type="RichTextLabel" parent="."]
 layout_mode = 2

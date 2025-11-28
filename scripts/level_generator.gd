@@ -15,7 +15,7 @@ var nw_border_atlas = Vector2(2, 1)
 var tile_size = Vector2(16, 8)
 
 
-const TOWER = preload("res://components/towers/tower.tscn")
+const TOWER = preload("res://components/castle/towers/tower.tscn")
 func read_level(path: String) -> Dictionary:
 	var file = FileAccess.open(path, FileAccess.READ)
 	var num_of_waves = int(file.get_line())

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://suk08b7n40vh"
-path="res://.godot/imported/isometrictiles.png-20144a6ad6b12531185469deb18ed8f1.ctex"
+uid="uid://c3bjogwceefbs"
+path="res://.godot/imported/castle.png-e7ecf017cb2098be02f29f1ea87cb45b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://isometrictiles.png"
-dest_files=["res://.godot/imported/isometrictiles.png-20144a6ad6b12531185469deb18ed8f1.ctex"]
+source_file="res://sprites/castle.png"
+dest_files=["res://.godot/imported/castle.png-e7ecf017cb2098be02f29f1ea87cb45b.ctex"]
 
 [params]
 

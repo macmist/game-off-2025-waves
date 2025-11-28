@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgon28ymxx446"]
 
-[ext_resource type="Script" path="res://components/waves/wave_part.gd" id="1_63efa"]
-[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_io6mg"]
+[ext_resource type="Script" path="res://scripts/wave_part.gd" id="1_63efa"]
+[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://sprites/isometrictiles.png" id="1_io6mg"]
 
 [node name="WaveStart" type="RigidBody2D"]
 collision_layer = 2

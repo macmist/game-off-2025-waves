@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bc15ty5npswib"]
 
-[ext_resource type="Script" path="res://components/waves/wave_part.gd" id="1_aqe8p"]
+[ext_resource type="Script" path="res://scripts/wave_part.gd" id="1_aqe8p"]
 
 [node name="WavePart" type="RigidBody2D"]
 z_index = 1

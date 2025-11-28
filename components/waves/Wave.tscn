@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tcrhjqei4amp"]
 
-[ext_resource type="Script" path="res://wave.gd" id="1_qw8cp"]
+[ext_resource type="Script" path="res://scripts/wave.gd" id="1_qw8cp"]
 
 [node name="Wave" type="Node2D" groups=["Wave"]]
 z_index = 1

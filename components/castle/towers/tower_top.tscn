@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://qj2sytwjyhum"]
 
-[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://isometrictiles.png" id="1_yd7hb"]
+[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://sprites/isometrictiles.png" id="1_yd7hb"]
 
 [node name="TowerTop" type="Node2D"]
 z_index = 1

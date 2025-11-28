@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://b6eidm051byq8"]
 
-[ext_resource type="StyleBox" uid="uid://kslyq436um4k" path="res://button_texture.tres" id="1_6ec44"]
-[ext_resource type="StyleBox" uid="uid://bfbrpjrck1do" path="res://button_hover_texture.tres" id="1_6ekfr"]
+[ext_resource type="StyleBox" uid="uid://kslyq436um4k" path="res://theme/button_texture.tres" id="1_6ec44"]
+[ext_resource type="StyleBox" uid="uid://bfbrpjrck1do" path="res://theme/button_hover_texture.tres" id="1_6ekfr"]
 [ext_resource type="FontFile" uid="uid://bjerha4gn6v7p" path="res://fonts/Baloo2-Bold.ttf" id="3_3nj58"]
 [ext_resource type="FontFile" uid="uid://13ixyowp1fhs" path="res://fonts/Baloo2-Regular.ttf" id="3_rbnc2"]
-[ext_resource type="StyleBox" uid="uid://b8i3uyc6hlrbo" path="res://panel_style.tres" id="4_yf1sx"]
+[ext_resource type="StyleBox" uid="uid://b8i3uyc6hlrbo" path="res://theme/panel_style.tres" id="4_yf1sx"]
 
 [resource]
 Button/colors/font_color = Color(0.105882, 0.164706, 0.203922, 1)

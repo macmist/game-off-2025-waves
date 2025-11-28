@@ -1,0 +1,84 @@
+[gd_scene load_steps=15 format=3 uid="uid://dlsuu5052jpmk"]
+
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_qt2lh"]
+[ext_resource type="PackedScene" uid="uid://ddhx6hbmmr850" path="res://components/UI/in_game_menu.tscn" id="2_xhyj3"]
+[ext_resource type="PackedScene" uid="uid://bjbne260tsm63" path="res://components/UI/SkyBackground.tscn" id="3_uq6l0"]
+[ext_resource type="PackedScene" uid="uid://ny78w53hk7bn" path="res://components/UI/ocean.tscn" id="4_0udeh"]
+[ext_resource type="PackedScene" uid="uid://fdcq877rg21j" path="res://components/waves/wave_generator.tscn" id="5_2oij1"]
+[ext_resource type="TileSet" uid="uid://c0mifsjfe3xm0" path="res://textures/tileset.tres" id="6_ipbi4"]
+[ext_resource type="Texture2D" uid="uid://suk08b7n40vh" path="res://sprites/isometrictiles.png" id="7_3vasx"]
+[ext_resource type="Script" path="res://scripts/marker.gd" id="8_dl6ba"]
+[ext_resource type="PackedScene" uid="uid://b6d2tew8sdhk7" path="res://components/level_generator.tscn" id="9_0da8j"]
+[ext_resource type="PackedScene" uid="uid://c3crf77ufdrun" path="res://components/UI/game_over.tscn" id="10_yp3eg"]
+[ext_resource type="PackedScene" uid="uid://cpe5etx51crtx" path="res://components/UI/level_clear.tscn" id="11_rye1d"]
+
+[sub_resource type="Gradient" id="Gradient_7ofga"]
+offsets = PackedFloat32Array(0, 0.665306, 0.934694, 0.995918)
+colors = PackedColorArray(0.87451, 0.945098, 1, 0, 0.87451, 0.945098, 1, 0.666667, 0.658824, 0.898039, 0.898039, 1, 0.227451, 0.705882, 0.764706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ponaf"]
+gradient = SubResource("Gradient_7ofga")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7o5go"]
+specular_color = Color(0.231373, 0.545098, 0.647059, 1)
+texture_filter = 1
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_qt2lh")
+
+[node name="InGameMenu" parent="." instance=ExtResource("2_xhyj3")]
+
+[node name="SkyBackground" parent="." instance=ExtResource("3_uq6l0")]
+
+[node name="Ocean" parent="." instance=ExtResource("4_0udeh")]
+position = Vector2(-417, -287)
+centered = false
+
+[node name="WaveGenerator" parent="." instance=ExtResource("5_2oij1")]
+
+[node name="Cursor Highlight Zone" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1, 0)
+tile_set = ExtResource("6_ipbi4")
+
+[node name="Marker" type="Sprite2D" parent="." node_paths=PackedStringArray("floor_map")]
+z_index = 2
+texture_filter = 1
+texture = ExtResource("7_3vasx")
+hframes = 4
+vframes = 3
+frame = 11
+script = ExtResource("8_dl6ba")
+floor_map = NodePath("../LevelGenerator")
+
+[node name="Horizon" type="Sprite2D" parent="."]
+position = Vector2(514, -371)
+rotation = 1.5708
+scale = Vector2(0.222248, 16.0592)
+texture = SubResource("GradientTexture2D_ponaf")
+
+[node name="LevelGenerator" parent="." node_paths=PackedStringArray("ocean_sprite", "horizon") instance=ExtResource("9_0da8j")]
+position = Vector2(124, 73)
+ocean_sprite = NodePath("../Ocean")
+horizon = NodePath("../Horizon")
+main_menu = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(218.75, 0.25)
+scale = Vector2(438.5, 1.5)
+texture = SubResource("CanvasTexture_7o5go")
+
+[node name="Game Over" parent="." instance=ExtResource("10_yp3eg")]
+visible = false
+
+[node name="Level Clear" parent="." instance=ExtResource("11_rye1d")]
+visible = false
+
+[connection signal="tile_clicked" from="Marker" to="WaveGenerator" method="_on_marker_tile_clicked"]

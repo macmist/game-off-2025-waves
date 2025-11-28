@@ -4,11 +4,9 @@ extends CanvasLayer
 @onready var back: Button = $"Control/LevelSelection Container/PanelContainer/MarginContainer/VBoxContainer/Back"
 @onready var level_list: GridContainer = $"Control/LevelSelection Container/PanelContainer/MarginContainer/VBoxContainer/Level list"
 
-const GAME_SCENE = "res://game_scene.tscn"
-	
-func start_level(level: int) -> void:
-	Game.level.current = level
-	get_tree().change_scene_to_file(GAME_SCENE)
+
+const GAME_SCENE = "res://scenes/game_scene.tscn"
+
 
 func _ready() -> void:
 	Game.find_all_levels()
@@ -31,3 +29,7 @@ func _on_back_pressed() -> void:
 
 func _on_start_pressed() -> void:
 	start_level(0)
+	
+func start_level(level: int) -> void:
+	Game.level.current = level
+	get_tree().change_scene_to_file(GAME_SCENE)

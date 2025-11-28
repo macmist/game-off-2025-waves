@@ -6,7 +6,7 @@ extends CanvasLayer
 
 var buttons: Array[TextWithButton] = []
 
-const TEXT_WITH_BUTTON = preload("res://text_with_button.tscn")
+const TEXT_WITH_BUTTON = preload("res://components/UI/text_with_button.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
