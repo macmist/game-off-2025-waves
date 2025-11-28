@@ -3,19 +3,23 @@
 - [x] Generate wave based on size and direction
 - [x] Make wave move and disappear
 - [x] Make wave appear on button click
-- [ ] Make wave split on collision. E.g. collided tile disapear but the rest continues
+- [x] Make wave split on collision. E.g. collided tile disapear but the rest continues
 - [ ] Add wave disappearing animation
-- [ ] Add UI to change wave params - size, speed
+- [x] Add UI to change wave params - size, speed
 - [x] Add possibility to select wave starting block
 - [x] Mechanism to destroy towers layer by layer
-- [ ] Make sand castles collapse after waves collide
-- [ ] 
-- [ ] Different levels of resistance for castles
+- [x] Make sand castles collapse after waves collide
+- [x] Different levels of resistance for castles
 - [x] Make towers object
 - [x] Make tower object go down one level or more depending on wave strength
-- [ ] Level objectives
-- [ ] Level success
-- [ ] Main menu
-- [ ] Level selection
-- [ ] Better UI
-- [ ] Web build
+- [x] Level objectives
+- [x] Level success
+- [x] Main menu
+- [x] Level selection
+- [x] Better UI
+- [x] Web build
+- [ ] Add indestructible walls
+- [ ] Change wave so each wave part is independant
+- [ ] Change wave so it calculate the next destination after each tile reached
+- [ ] Add reflective wall: if wave touch it, it turns 90 degress. Just the part that touched
+- [ ] Add more levels
