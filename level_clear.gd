@@ -16,3 +16,10 @@ func update_next_visibility() -> void:
 	if !Game.has_next_level():
 		rich_text_label.text = "Game cleared!"
 	next_level.visible = Game.has_next_level()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		if !Game.has_next_level():
+			rich_text_label.text = "Game cleared!"
+		next_level.visible = Game.has_next_level()
