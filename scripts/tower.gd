@@ -45,12 +45,19 @@ func _update_collision_shape() -> void:
 		col.shape = shape
 		col.position.y = 4
 		col.position.x = 0
-	
+		
+		
+func play_hit_shake(callback: Callable):
+	var tw = create_tween()
+	tw.tween_property(self, "position:x", position.x + 2, 0.05)
+	tw.tween_property(self, "position:x", position.x - 2, 0.1)
+	tw.tween_property(self, "position:x", position.x, 0.05)
+	tw.tween_callback(callback)
 
 # Return true if destroyed
 func remove_layers(layers_to_remove: int = 1) -> bool:
 	if size <= layers_to_remove:
-		queue_free()
+		play_hit_shake(queue_free)
 		Game.points_remaining.current += 1
 		return true
 	var count = layers.get_child_count()
@@ -61,7 +68,7 @@ func remove_layers(layers_to_remove: int = 1) -> bool:
 		var child = layers.get_child(i)
 		child.position = Vector2(0, - i * tile_size.y / 2)
 	size -= layers_to_remove
-	_update_collision_shape()
+	play_hit_shake(_update_collision_shape)
 	return false
 	
 	
@@ -81,4 +88,5 @@ func damage(amount: int) -> bool:
 			amount -= amount
 	if layers_to_remove > 0:
 		return remove_layers(layers_to_remove)
+		
 	return false

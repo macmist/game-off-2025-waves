@@ -80,14 +80,14 @@ func generate_floor(dict: Dictionary):
 func add_tower(cell_position: Vector2, height: int):
 	var global = map_to_local(cell_position)
 	var tower = TOWER.instantiate()
-	tower.position = global + Vector2(0, -4)
+	tower.position = global + Vector2(0, -6)
 	tower.size = height
 	add_child(tower)
 	
 func add_boulder(cell_position: Vector2):
 	var global = map_to_local(cell_position)
 	var tower = BOULDER.instantiate()
-	tower.position = global + Vector2(0, -4)
+	tower.position = global + Vector2(0, -6)
 	add_child(tower)
 	
 func _ready() -> void:
