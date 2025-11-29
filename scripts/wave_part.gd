@@ -3,6 +3,7 @@ class_name WavePart
 
 @export var strength: int = Game.strength.current
 @export var health: int = 30
+@onready var splash: GPUParticles2D = $Splash
 
 var touched_objects = []
 
@@ -15,8 +16,12 @@ func hit():
 	destruction_animation_tween.tween_property(self, "scale", Vector2(0, 0), 0.15)\
 	.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	destruction_animation_tween.parallel().tween_property(self, "modulate:a", 0.0, 0.15)
-	destruction_animation_tween.tween_callback(queue_free)
+	destruction_animation_tween.tween_callback(splash_and_destroy)
 
+
+func splash_and_destroy():
+	splash.restart()
+	queue_free()
 
 func _on_body_entered(body: Node) -> void:
 	if not touched_objects.has(body):

@@ -12,6 +12,7 @@ class_name Tower
 @export var resistance_per_tile: int = 10
 
 @onready var layers: Node2D = $Layers
+@onready var particles: GPUParticles2D = $Particles
 
 
 var resistance: int = 10
@@ -49,6 +50,7 @@ func _update_collision_shape() -> void:
 		
 func play_hit_shake(callback: Callable):
 	var tw = create_tween()
+	particles.restart()
 	tw.tween_property(self, "position:x", position.x + 2, 0.05)
 	tw.tween_property(self, "position:x", position.x - 2, 0.1)
 	tw.tween_property(self, "position:x", position.x, 0.05)

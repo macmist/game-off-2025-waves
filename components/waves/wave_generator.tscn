@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://fdcq877rg21j"]
 
-[ext_resource type="Script" path="res://components/waves/wave_generator.gd" id="1_qpitc"]
+[ext_resource type="Script" path="res://scripts/wave_generator.gd" id="1_qpitc"]
 [ext_resource type="PackedScene" uid="uid://bxt71xxq58knm" path="res://components/waves/wave_start_NE.tscn" id="2_quuy5"]
 [ext_resource type="PackedScene" uid="uid://btpj7h6gt6p6s" path="res://components/waves/wave_start_NW.tscn" id="3_aeiqd"]
 [ext_resource type="PackedScene" uid="uid://8b18hw05m6a2" path="res://components/waves/wave_end_NE.tscn" id="4_eujaf"]
