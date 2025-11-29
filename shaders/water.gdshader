@@ -18,9 +18,9 @@ void fragment() {
     vec4 color = mix(tex1, tex2, 0.5) * shimmer;
     // Apply tint and output
     COLOR = color * tint_color;
-	
+
 	float pulse = 1.0 + 0.05 * sin(TIME * 0.5);
 	COLOR.rgb *= pulse;
 	COLOR.rgb = pow(COLOR.rgb, vec3(0.9));
-	
+
 }
