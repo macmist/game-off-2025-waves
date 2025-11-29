@@ -1,9 +1,9 @@
-3
+4
 10 20 3 1
 6 6
 1111lw
-sssslw
-ss1slw
-sssslw
+1bbblw
+1b1slw
+1bsslw
 rrrrww
 wwwwww

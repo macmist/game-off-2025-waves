@@ -18,7 +18,7 @@
 - [x] Level selection
 - [x] Better UI
 - [x] Web build
-- [ ] Add indestructible walls
+- [x] Add indestructible walls
 - [ ] Change wave so each wave part is independant
 - [ ] Change wave so it calculate the next destination after each tile reached
 - [ ] Add reflective wall: if wave touch it, it turns 90 degress. Just the part that touched

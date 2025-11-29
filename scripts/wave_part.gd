@@ -22,3 +22,5 @@ func _on_body_entered(body: Node) -> void:
 			health -= touch
 		if health <= 0:
 			hit()
+	if body.is_in_group("Boulder"):
+		hit()

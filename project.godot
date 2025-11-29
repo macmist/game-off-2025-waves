@@ -29,6 +29,7 @@ window/size/resizable=false
 
 Wave=""
 Tower=""
+Boulder=""
 
 [gui]
 

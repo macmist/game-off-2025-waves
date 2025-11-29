@@ -24,18 +24,16 @@ func _ready():
 func build():
 	var total_tiles = size
 	var total_height = total_tiles * tile_size.y / 2
-	var points: Array[Vector2] = []
 	
 	for i in range(size):
 		var middle = tower_middle.instantiate()
 		middle.position = Vector2(0, - i * tile_size.y / 2)
 		layers.add_child(middle)
-		points.append(middle.position)
 		
 	var top = tower_top.instantiate()
 	top.position = Vector2(0, -total_height)
 	layers.add_child(top)
-	_update_collision_shape()
+
 	
 func _update_collision_shape() -> void:
 	var collisions = find_children("*", "CollisionShape2D")

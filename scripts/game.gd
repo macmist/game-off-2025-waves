@@ -15,6 +15,7 @@ var level: EditableInt = EditableInt.new(0)
 var max_level: EditableInt = EditableInt.new(0)
 
 const MAIN_MENU_SCENE = "res://scenes/main_menu.tscn"
+const LEVEL_SCENE = "res://scenes/game_scene.tscn"
 
 func try_game_over():
 	if num_of_waves.current == 0 &&  get_tree().get_node_count_in_group("Wave") <= 1:
@@ -24,7 +25,7 @@ func try_game_over():
 			level_failed.emit(level.current)
 			
 func begin_level():
-	start_level.emit(level.current)
+	get_tree().change_scene_to_file(LEVEL_SCENE)
 	
 func main_menu():
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE)

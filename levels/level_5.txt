@@ -1,7 +1,7 @@
-2
-10 20 3 1
+1
+10 20 3 2
 4 4
 1slw
-1slw
+bblw
 rrww
 wwww

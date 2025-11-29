@@ -16,6 +16,8 @@ var tile_size = Vector2(16, 8)
 
 
 const TOWER = preload("res://components/castle/towers/tower.tscn")
+const BOULDER = preload("res://components/castle/boulder.tscn")
+
 func read_level(path: String) -> Dictionary:
 	var file = FileAccess.open(path, FileAccess.READ)
 	var num_of_waves = int(file.get_line())
@@ -29,7 +31,7 @@ func read_level(path: String) -> Dictionary:
 		var content = file.get_line()
 		tiles.append([])
 		for x in content:
-			tiles[y].append(int(x))
+			tiles[y].append(x)
 	var res =  {"width": width, "height": height, "tiles": tiles, "num_of_waves": num_of_waves}
 	res.merge(config)
 	return res
@@ -52,23 +54,28 @@ func generate_floor(dict: Dictionary):
 	
 	for h in range(height):
 		for w in range(width):
+			var cell_position = Vector2(w, h)
 			var atlas = land_atlas
 			var t = tiles[h][w]
 			match t:
-				0: 
+				"w": 
 					atlas = water_atlas
-				1:
+				"r":
 					atlas = ne_border_atlas
-				2:
+				"l":
 					atlas = nw_border_atlas
+				"b":
+					atlas = land_atlas
+					add_boulder(cell_position)
 				_:
 					atlas = land_atlas
 			
-			var cell_position = Vector2(w, h)
+			
 			set_cell(cell_position, 0, atlas)
-			if t >= 4:
-				height = t - 3 # 4 is a tower of size 1
-				add_tower(cell_position, height)
+			if t.is_valid_int():
+				var tower_height = int(t)
+				add_tower(cell_position, tower_height)
+			
 			
 func add_tower(cell_position: Vector2, height: int):
 	var global = map_to_local(cell_position)
@@ -77,6 +84,11 @@ func add_tower(cell_position: Vector2, height: int):
 	tower.size = height
 	add_child(tower)
 	
+func add_boulder(cell_position: Vector2):
+	var global = map_to_local(cell_position)
+	var tower = BOULDER.instantiate()
+	tower.position = global + Vector2(0, -4)
+	add_child(tower)
 	
 func _ready() -> void:
 	if main_menu:

@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8aix32v1ygx8"]
+[gd_scene load_steps=4 format=3 uid="uid://c8aix32v1ygx8"]
 
 [ext_resource type="Script" path="res://scripts/tower.gd" id="1_wqo2f"]
 [ext_resource type="PackedScene" uid="uid://qj2sytwjyhum" path="res://components/castle/towers/tower_top.tscn" id="2_flng0"]
 [ext_resource type="PackedScene" uid="uid://8u2ic1rm7yu5" path="res://components/castle/towers/tower_middle.tscn" id="3_7a5un"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfuoc"]
 
 [node name="Tower" type="RigidBody2D"]
 z_index = 1
@@ -21,5 +19,6 @@ tower_middle = ExtResource("3_7a5un")
 z_index = 1
 z_as_relative = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_yfuoc")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 10)
+polygon = PackedVector2Array(6, -5, 0, -3, -6, -5, 0, -8)
