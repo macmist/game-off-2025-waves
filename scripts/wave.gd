@@ -25,11 +25,20 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	global_position = global_position.move_toward(target, speed * delta)
 	if global_position == target:
-		explode_and_quit()
+		explode()
 		
 
 
-
-func explode_and_quit():
+func on_exploded():
 	Game.try_game_over()
 	queue_free()
+	
+
+func explode():
+	var destruction_animation_tween = create_tween()
+	destruction_animation_tween.tween_property(self, "scale", Vector2(0, 0), 0.15)\
+	.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	destruction_animation_tween.parallel().tween_property(self, "modulate:a", 0.0, 0.15)
+	destruction_animation_tween.tween_callback(on_exploded)
+
+	

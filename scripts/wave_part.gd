@@ -9,7 +9,11 @@ func _ready():
 
 
 func hit():
-	queue_free()
+	var destruction_animation_tween = create_tween()
+	destruction_animation_tween.tween_property(self, "scale", Vector2(0, 0), 0.15)\
+	.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	destruction_animation_tween.parallel().tween_property(self, "modulate:a", 0.0, 0.15)
+	destruction_animation_tween.tween_callback(queue_free)
 
 
 func _on_body_entered(body: Node) -> void:
