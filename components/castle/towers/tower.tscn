@@ -20,13 +20,9 @@ initial_velocity_max = 40.0
 color = Color(0.788235, 0.65098, 0.458824, 1)
 color_ramp = SubResource("GradientTexture1D_qb4ix")
 
-[node name="Tower" type="RigidBody2D"]
+[node name="Tower" type="StaticBody2D"]
 z_index = 1
 y_sort_enabled = true
-mass = 0.001
-gravity_scale = 0.0
-freeze = true
-freeze_mode = 1
 script = ExtResource("1_wqo2f")
 tower_top = ExtResource("2_flng0")
 tower_middle = ExtResource("3_7a5un")

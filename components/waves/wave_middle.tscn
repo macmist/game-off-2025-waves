@@ -19,7 +19,9 @@ gravity = Vector3(0, 98, 0)
 color_ramp = SubResource("GradientTexture1D_6jwhp")
 turbulence_enabled = true
 
-[node name="WaveMiddle" type="RigidBody2D"]
+[node name="WaveMiddle" type="RigidBody2D" groups=["Wave"]]
+z_index = 1
+y_sort_enabled = true
 collision_layer = 2
 freeze = true
 freeze_mode = 1
@@ -40,6 +42,7 @@ position = Vector2(0, 13)
 polygon = PackedVector2Array(-6, -8, 0, -6, 6, -8, 0, -11)
 
 [node name="Splash" type="GPUParticles2D" parent="."]
+y_sort_enabled = true
 emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_83a86")

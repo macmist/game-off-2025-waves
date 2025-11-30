@@ -19,7 +19,9 @@ gravity = Vector3(0, 98, 0)
 color_ramp = SubResource("GradientTexture1D_kvyns")
 turbulence_enabled = true
 
-[node name="WaveStart" type="RigidBody2D"]
+[node name="WaveStart" type="RigidBody2D" groups=["Wave"]]
+z_index = 1
+y_sort_enabled = true
 collision_layer = 2
 freeze = true
 freeze_mode = 1

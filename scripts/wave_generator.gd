@@ -23,46 +23,48 @@ var wave_size: int = 1
 var start_position: Vector2
 
 func build_wave():
-	var wave: Wave = base_wave.instantiate()
 	wave_size = Game.width.current - 2 # don't take the side into consideration
 	var total_tiles = Game.width.current
 	# instantiate enough middle tile
 	# based on wave size
 	var total_size = total_tiles * tile_size
 	
-	# TODO: handle correct offset when direction is north west
 	var offset_x = -total_size.x / 4 + tile_size.x / 4
 	var offset_y = -total_size.y / 4 + tile_size.y / 4
 	
 	var dir_x := 1.0 if direction == DIRECTION.NORTH_EAST else -1.0
 	
-	var points: Array[Vector2] = []
-	
-	var start_tile = wave_start_north_east.instantiate() if direction == DIRECTION.NORTH_EAST else wave_start_north_west.instantiate()
-	start_tile.position = Vector2(offset_x * dir_x, offset_y)
-	wave.add_child(start_tile)
-	points.append(start_tile.position)
-
+	var start_tile: WavePart = wave_start_north_east.instantiate() if direction == DIRECTION.NORTH_EAST else wave_start_north_west.instantiate()
+	level_generator.add_child(start_tile)
+	start_tile.global_position = start_position +  Vector2(offset_x * dir_x, offset_y)
+	print(start_tile.global_position)
+	start_tile.distance = Game.duration.current
+	start_tile.speed = Game.speed.current
+	start_tile.direction = direction
+	start_tile.calculate_target()
 	
 	for i in range(wave_size):
-		var mid_tile = wave_middle.instantiate()
-		mid_tile.position = Vector2(offset_x * dir_x + dir_x * (i + 1) * tile_size.x / 2, offset_y + (i + 1) * tile_size.y / 2)
-		wave.add_child(mid_tile)
-		points.append(mid_tile.position)
-
-	var end_tile = wave_end_north_east.instantiate() if direction == DIRECTION.NORTH_EAST else wave_end_north_west.instantiate()
-	end_tile.position =  Vector2(offset_x * dir_x + dir_x * (wave_size + 1) * tile_size.x / 2, offset_y + (wave_size + 1) * tile_size.y / 2)
-	wave.add_child(end_tile)
-	points.append(end_tile.position)
-	#_create_collision_polygon(points, wave)
-	if start_position != null:
-		wave.start_point = start_position
-	if direction != null:
-		wave.direction = direction
-	wave.distance = Game.duration.current
-	wave.speed = Game.speed.current
-	
-	level_generator.add_child(wave) # we instantiate everything on the level generator to be able to properly order by y index
+		var mid_tile: WavePart = wave_middle.instantiate()
+		level_generator.add_child(mid_tile)
+		mid_tile.global_position = start_position + Vector2(offset_x * dir_x + dir_x * (i + 1) * tile_size.x / 2, offset_y + (i + 1) * tile_size.y / 2)
+		print(mid_tile.global_position)
+		mid_tile.speed = Game.speed.current
+		mid_tile.direction = direction
+		mid_tile.distance = Game.duration.current
+		mid_tile.calculate_target()
+		
+	var end_tile: WavePart = wave_end_north_east.instantiate() if direction == DIRECTION.NORTH_EAST else wave_end_north_west.instantiate()
+	level_generator.add_child(end_tile)
+	end_tile.global_position = start_position + Vector2(offset_x * dir_x + dir_x * (wave_size + 1) * tile_size.x / 2, offset_y + (wave_size + 1) * tile_size.y / 2)
+	print(end_tile.global_position)
+	end_tile.distance = Game.duration.current
+	end_tile.speed = Game.speed.current
+	end_tile.direction = direction
+	end_tile.calculate_target()
+		
+	for x in level_generator.get_children():
+		if x is WavePart:
+			x.collision_enabled = true
 	
 
 func _on_button_pressed() -> void:

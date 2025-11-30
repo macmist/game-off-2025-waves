@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends StaticBody2D
 
 class_name Tower
 
@@ -37,15 +37,7 @@ func build():
 
 	
 func _update_collision_shape() -> void:
-	var collisions = find_children("*", "CollisionShape2D")
-	if collisions.size() > 0:
-		var col = collisions[0];
-		var shape = RectangleShape2D.new()
-		shape.size.x = 8
-		shape.size.y = 4
-		col.shape = shape
-		col.position.y = 4
-		col.position.x = 0
+	pass
 		
 		
 func play_hit_shake(callback: Callable):

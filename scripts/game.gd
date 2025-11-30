@@ -18,7 +18,8 @@ const MAIN_MENU_SCENE = "res://scenes/main_menu.tscn"
 const LEVEL_SCENE = "res://scenes/game_scene.tscn"
 
 func try_game_over():
-	if num_of_waves.current == 0 &&  get_tree().get_node_count_in_group("Wave") <= 1:
+	await get_tree().create_timer(.3).timeout
+	if num_of_waves.current == 0 &&  get_tree().get_node_count_in_group("Wave") <= 0:
 		if get_tree().get_node_count_in_group("Tower") == 0:
 			level_complete.emit(level.current)
 		else:
@@ -52,6 +53,3 @@ func find_all_levels():
 						if level_number > max_level.current:
 							max_level.current = level_number
 			file_name = dir.get_next()
-	
-	else:
-		print("no dir")
