@@ -10,8 +10,8 @@ const TEXT_WITH_BUTTON = preload("res://components/UI/text_with_button.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_bottom_button("speed", 10, Game.speed)
-	add_bottom_button("strength", 1, Game.strength)
+	#add_bottom_button("speed", 10, Game.speed)
+	#add_bottom_button("strength", 1, Game.strength)
 	add_bottom_button("width", 2, Game.width)
 	add_bottom_button("duration", 1, Game.duration)
 	Game.num_of_waves.changed.connect(edit_wave_text)
