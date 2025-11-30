@@ -30,6 +30,7 @@ window/size/resizable=false
 Wave=""
 Tower=""
 Boulder=""
+Mirror=""
 
 [gui]
 

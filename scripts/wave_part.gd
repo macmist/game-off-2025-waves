@@ -52,7 +52,6 @@ func _on_body_entered(body: Node) -> void:
 	if not touched_objects.has(body):
 		touched_objects.append(body)
 		if body is Tower:
-			print(body.name," ", self.name, " ", body.global_position, self.global_position)
 			var touch = min(strength, health)
 			var destroyed = body.damage(touch)
 			if !destroyed: # The object was too strong and the wave gets destroyed
@@ -69,7 +68,6 @@ func _on_body_entered(body: Node) -> void:
 func at_touching_distance(a: Vector2, b: Vector2):
 	var x = abs(a.x - b.x)
 	var y = abs(a.y - b.y)
-	print("x ", x, "y ", y)
 	return x <= tile_size.x && y <= tile_size.y / 2
 	
 

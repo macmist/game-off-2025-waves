@@ -1,0 +1,11 @@
+6
+10 20 3 1
+8 8
+s11111lw
+bbbbbblw
+11111blw
+sssssblw
+sssssblw
+sssssblw
+rrrrrrww
+wwwwwwww

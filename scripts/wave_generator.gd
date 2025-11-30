@@ -37,7 +37,6 @@ func build_wave():
 	var start_tile: WavePart = wave_start_north_east.instantiate() if direction == DIRECTION.NORTH_EAST else wave_start_north_west.instantiate()
 	level_generator.add_child(start_tile)
 	start_tile.global_position = start_position +  Vector2(offset_x * dir_x, offset_y)
-	print(start_tile.global_position)
 	start_tile.distance = Game.duration.current
 	start_tile.speed = Game.speed.current
 	start_tile.direction = direction
@@ -47,7 +46,6 @@ func build_wave():
 		var mid_tile: WavePart = wave_middle.instantiate()
 		level_generator.add_child(mid_tile)
 		mid_tile.global_position = start_position + Vector2(offset_x * dir_x + dir_x * (i + 1) * tile_size.x / 2, offset_y + (i + 1) * tile_size.y / 2)
-		print(mid_tile.global_position)
 		mid_tile.speed = Game.speed.current
 		mid_tile.direction = direction
 		mid_tile.distance = Game.duration.current
@@ -56,7 +54,6 @@ func build_wave():
 	var end_tile: WavePart = wave_end_north_east.instantiate() if direction == DIRECTION.NORTH_EAST else wave_end_north_west.instantiate()
 	level_generator.add_child(end_tile)
 	end_tile.global_position = start_position + Vector2(offset_x * dir_x + dir_x * (wave_size + 1) * tile_size.x / 2, offset_y + (wave_size + 1) * tile_size.y / 2)
-	print(end_tile.global_position)
 	end_tile.distance = Game.duration.current
 	end_tile.speed = Game.speed.current
 	end_tile.direction = direction
